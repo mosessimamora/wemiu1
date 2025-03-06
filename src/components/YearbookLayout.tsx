@@ -68,27 +68,7 @@ const YearbookLayout = ({ children, showNav = true, title }: YearbookLayoutProps
       </main>
       
       {/* Navigation - fixed the Memories label text */}
-      {showNav && (
-        <motion.nav 
-          initial={{ y: 100 }}
-          animate={{ y: 0 }}
-          transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
-          className="fixed bottom-0 left-0 right-0 bg-yearbook-brown/95 backdrop-blur-md text-white p-4 flex justify-around items-center z-50"
-        >
-          <Link to="/messages" className={`flex flex-col items-center gap-1 yearbook-nav-button ${location.pathname === '/messages' ? 'text-yearbook-gold' : 'text-white'}`}>
-            <MessageCircle className="w-6 h-6" />
-            <span className="text-xs text-center">Sebuah Pesan Untukmu!</span>
-          </Link>
-          <Link to="/members" className={`flex flex-col items-center gap-1 yearbook-nav-button ${location.pathname === '/members' ? 'text-yearbook-gold' : 'text-white'}`}>
-            <Users className="w-6 h-6" />
-            <span className="text-xs text-center">Anggota Kelas</span>
-          </Link>
-          <Link to="/memories" className={`flex flex-col items-center gap-1 yearbook-nav-button ${location.pathname === '/memories' ? 'text-yearbook-gold' : 'text-white'}`}>
-            <Image className="w-6 h-6" />
-            <span className="text-xs text-center">Kenangan</span>
-          </Link>
-        </motion.nav>
-      )}
+      
     </div>
 	</AudioProvider>
   );
