@@ -10,8 +10,8 @@ import AudioPlayer from "../components/AudioPlayer";
 const messageData = [
   {
     id: 1,
-    backgroundImage: "/GIovello.JPG",
-    message: "selamat berpisah teman teman!"
+    backgroundImage: "/Giovello.JPG",
+    message: "selamat berpisah teman teman! selamat berpisah pada mu kekasih :)"
   },
   {
     id: 2,
