@@ -11,52 +11,52 @@ const messageData = [
   {
     id: 1,
     backgroundImage: "https://images.unsplash.com/photo-1517486808906-6ca8b3f8e1c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    message: "Selamat atas kelulusan kalian! Perjalanan hidup yang sebenarnya baru dimulai. Jadilah pribadi yang bermanfaat dan selalu menebar kebaikan di mana pun kalian berada."
+    message: "selamat berpisah teman teman!"
   },
   {
     id: 2,
     backgroundImage: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    message: "Saya sangat bangga dengan prestasi yang telah kalian capai. Tetaplah belajar dan berkembang, karena hidup adalah pembelajaran yang tak pernah berhenti."
+    message: "see u on top"
   },
   {
     id: 3,
     backgroundImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    message: "Seperti rumus matematika, hidup juga memiliki pola. Temukan pola kalian sendiri dan pecahkan masalah dengan bijak. Selamat menempuh kehidupan baru!"
+    message: "i love you"
   },
   {
     id: 4,
     backgroundImage: "https://images.unsplash.com/photo-1501349800519-48093d60bde0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    message: "Tulislah cerita hidup kalian dengan pena keyakinan dan tinta keberanian. Buat narasi yang bermakna dan menginspirasi banyak orang."
+    message: "semoga bisa masuk universitas impian"
   },
   {
     id: 5,
     backgroundImage: "https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    message: "Hidup seperti ekosistem, saling terhubung dan mempengaruhi. Jadilah organisme yang memberikan manfaat bagi lingkungan sekitar."
+    message: "jangan lupa sama metho"
   },
   {
     id: 6,
     backgroundImage: "https://images.unsplash.com/photo-1505245208761-ba872912fac0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    message: "Ingat hukum kekekalan energi, energi tidak dapat diciptakan atau dimusnahkan, hanya berubah bentuk. Ubah energi kalian menjadi sesuatu yang positif dan bermanfaat."
+    message: "tidak terasa 3 tahun berlalu begitu cepat"
   },
   {
     id: 7,
     backgroundImage: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    message: "Seperti reaksi kimia, pertemuan dengan berbagai orang akan membentuk 'senyawa' baru dalam hidup kalian. Pilih 'reaksi' yang tepat untuk menghasilkan 'senyawa' terbaik."
+    message: "ingin rasanya memutar waktu kembali"
   },
   {
     id: 8,
     backgroundImage: "https://images.unsplash.com/photo-1570215174562-8a176b46af8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    message: "Kalian telah menyelesaikan satu bab sejarah hidup. Kini saatnya menulis bab baru. Jadikan masa lalu sebagai pelajaran untuk meraih masa depan yang lebih baik."
+    message: "tapi boong"
   },
   {
     id: 9,
     backgroundImage: "https://images.unsplash.com/photo-1569683795645-b62e50fbf103?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    message: "Hidup adalah kanvas kosong, dan kalian adalah pelukisnya. Beranilah memberi warna-warni berani pada lukisan hidup kalian. Jadikan hidup sebagai karya seni terbaik."
+    message: "awkaokwokao"
   },
   {
     id: 10,
     backgroundImage: "https://images.unsplash.com/photo-1533287486341-f1383dea5388?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    message: "Seperti atlet yang pantang menyerah, hadapi tantangan hidup dengan semangat juang tinggi. Berkeringatlah untuk mimpi kalian dan raih kemenangan dalam permainan kehidupan!"
+    message: "sukses selalu guyss!"
   }
 ];
 
