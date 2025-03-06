@@ -1,70 +1,61 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import YearbookLayout from "../components/YearbookLayout";
 import { motion, AnimatePresence } from "framer-motion";
+import AudioPlayer from "../components/AudioPlayer";
 
-// Sample message data (placeholder)
+// Sample message data (placeholder with full-image background)
 const messageData = [
   {
     id: 1,
-    sender: "Kepala Sekolah",
-    photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    backgroundImage: "https://images.unsplash.com/photo-1517486808906-6ca8b3f8e1c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
     message: "Selamat atas kelulusan kalian! Perjalanan hidup yang sebenarnya baru dimulai. Jadilah pribadi yang bermanfaat dan selalu menebar kebaikan di mana pun kalian berada."
   },
   {
     id: 2,
-    sender: "Wali Kelas",
-    photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    backgroundImage: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
     message: "Saya sangat bangga dengan prestasi yang telah kalian capai. Tetaplah belajar dan berkembang, karena hidup adalah pembelajaran yang tak pernah berhenti."
   },
   {
     id: 3,
-    sender: "Guru Matematika",
-    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    backgroundImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
     message: "Seperti rumus matematika, hidup juga memiliki pola. Temukan pola kalian sendiri dan pecahkan masalah dengan bijak. Selamat menempuh kehidupan baru!"
   },
   {
     id: 4,
-    sender: "Guru Bahasa Indonesia",
-    photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    backgroundImage: "https://images.unsplash.com/photo-1501349800519-48093d60bde0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
     message: "Tulislah cerita hidup kalian dengan pena keyakinan dan tinta keberanian. Buat narasi yang bermakna dan menginspirasi banyak orang."
   },
   {
     id: 5,
-    sender: "Guru Biologi",
-    photo: "https://images.unsplash.com/photo-1569913486515-b74bf7751574?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    backgroundImage: "https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
     message: "Hidup seperti ekosistem, saling terhubung dan mempengaruhi. Jadilah organisme yang memberikan manfaat bagi lingkungan sekitar."
   },
   {
     id: 6,
-    sender: "Guru Fisika",
-    photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    backgroundImage: "https://images.unsplash.com/photo-1505245208761-ba872912fac0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
     message: "Ingat hukum kekekalan energi, energi tidak dapat diciptakan atau dimusnahkan, hanya berubah bentuk. Ubah energi kalian menjadi sesuatu yang positif dan bermanfaat."
   },
   {
     id: 7,
-    sender: "Guru Kimia",
-    photo: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    backgroundImage: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
     message: "Seperti reaksi kimia, pertemuan dengan berbagai orang akan membentuk 'senyawa' baru dalam hidup kalian. Pilih 'reaksi' yang tepat untuk menghasilkan 'senyawa' terbaik."
   },
   {
     id: 8,
-    sender: "Guru Sejarah",
-    photo: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    backgroundImage: "https://images.unsplash.com/photo-1570215174562-8a176b46af8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
     message: "Kalian telah menyelesaikan satu bab sejarah hidup. Kini saatnya menulis bab baru. Jadikan masa lalu sebagai pelajaran untuk meraih masa depan yang lebih baik."
   },
   {
     id: 9,
-    sender: "Guru Seni",
-    photo: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    backgroundImage: "https://images.unsplash.com/photo-1569683795645-b62e50fbf103?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
     message: "Hidup adalah kanvas kosong, dan kalian adalah pelukisnya. Beranilah memberi warna-warni berani pada lukisan hidup kalian. Jadikan hidup sebagai karya seni terbaik."
   },
   {
     id: 10,
-    sender: "Guru Olahraga",
-    photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    backgroundImage: "https://images.unsplash.com/photo-1533287486341-f1383dea5388?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
     message: "Seperti atlet yang pantang menyerah, hadapi tantangan hidup dengan semangat juang tinggi. Berkeringatlah untuk mimpi kalian dan raih kemenangan dalam permainan kehidupan!"
   }
 ];
@@ -110,12 +101,51 @@ const Messages = () => {
     damping: 30
   };
 
+  // Handle swipe gestures
+  const handleSwipe = (e: TouchEvent, startX: number) => {
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
+    
+    // If the swipe is more than 50px, consider it a navigation gesture
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        nextMessage(); // Swipe left, go to next
+      } else {
+        prevMessage(); // Swipe right, go to previous
+      }
+    }
+  };
+
+  // Set up swipe event listeners
+  useEffect(() => {
+    let startX = 0;
+    
+    const touchStartHandler = (e: TouchEvent) => {
+      startX = e.touches[0].clientX;
+    };
+    
+    const touchEndHandler = (e: TouchEvent) => {
+      handleSwipe(e, startX);
+    };
+    
+    document.addEventListener('touchstart', touchStartHandler);
+    document.addEventListener('touchend', touchEndHandler);
+    
+    return () => {
+      document.removeEventListener('touchstart', touchStartHandler);
+      document.removeEventListener('touchend', touchEndHandler);
+    };
+  }, [currentPage]); // Re-attach listeners when current page changes
+
   return (
     <PageTransition>
-      <YearbookLayout title="Messages">
-        <div className="flex flex-col items-center justify-center min-h-[70vh] relative px-4">
+      <YearbookLayout title="Messages" showNav={true}>
+        {/* Background Music Player */}
+        <AudioPlayer audioSrc="/lovable-uploads/messages-background.mp3" />
+        
+        <div className="flex flex-col items-center justify-center min-h-[80vh] relative px-0">
           {/* Page indicator */}
-          <div className="absolute top-0 left-0 right-0 flex justify-center gap-1 mb-6 py-4">
+          <div className="absolute top-0 left-0 right-0 flex justify-center gap-1 mb-6 py-4 z-20">
             {messageData.map((_, index) => (
               <div 
                 key={index}
@@ -128,8 +158,8 @@ const Messages = () => {
             ))}
           </div>
           
-          {/* Message content */}
-          <div className="w-full max-w-2xl mx-auto relative mt-12">
+          {/* Full-screen message content */}
+          <div className="w-full h-[80vh] relative overflow-hidden">
             <AnimatePresence custom={direction} mode="wait">
               <motion.div
                 key={currentPage}
@@ -139,39 +169,37 @@ const Messages = () => {
                 animate="center"
                 exit="exit"
                 transition={pageTransition}
-                className="flex flex-col items-center p-6"
+                className="absolute inset-0 w-full h-full"
               >
-                <div className="w-32 h-32 rounded-full overflow-hidden mb-6 border-4 border-yearbook-gold shadow-lg">
-                  <img 
-                    src={currentMessage.photo} 
-                    alt={currentMessage.sender} 
-                    className="w-full h-full object-cover"
-                  />
+                {/* Full-screen background image */}
+                <div 
+                  className="absolute inset-0 w-full h-full bg-cover bg-center"
+                  style={{ backgroundImage: `url(${currentMessage.backgroundImage})` }}
+                >
+                  {/* Dark overlay for better text readability */}
+                  <div className="absolute inset-0 bg-black/30"></div>
                 </div>
                 
-                <h2 className="text-2xl font-semibold text-yearbook-brown mb-4">
-                  {currentMessage.sender}
-                </h2>
-                
-                <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-md mb-8">
-                  <p className="text-yearbook-brown text-lg leading-relaxed">
+                {/* Message text overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent text-white">
+                  <p className="text-lg leading-relaxed">
                     "{currentMessage.message}"
                   </p>
-                </div>
-                
-                <div className="text-sm text-yearbook-brown/60">
-                  {currentPage + 1} of {messageData.length}
+                  
+                  <div className="mt-4 text-sm text-white/60">
+                    {currentPage + 1} of {messageData.length}
+                  </div>
                 </div>
               </motion.div>
             </AnimatePresence>
             
             {/* Navigation buttons */}
-            <div className="absolute top-1/2 left-0 right-0 flex justify-between -translate-y-1/2 pointer-events-none">
+            <div className="absolute top-1/2 left-0 right-0 flex justify-between -translate-y-1/2 px-4 pointer-events-none z-10">
               <button 
                 onClick={prevMessage}
                 disabled={currentPage === 0}
-                className={`p-3 rounded-full bg-yearbook-brown/10 text-yearbook-brown pointer-events-auto ${
-                  currentPage === 0 ? 'opacity-30 cursor-not-allowed' : 'opacity-100 cursor-pointer hover:bg-yearbook-brown/20'
+                className={`p-3 rounded-full bg-black/30 text-white pointer-events-auto ${
+                  currentPage === 0 ? 'opacity-30 cursor-not-allowed' : 'opacity-100 cursor-pointer hover:bg-black/40'
                 }`}
               >
                 <ChevronLeft className="w-6 h-6" />
@@ -180,8 +208,8 @@ const Messages = () => {
               <button 
                 onClick={nextMessage}
                 disabled={currentPage === messageData.length - 1}
-                className={`p-3 rounded-full bg-yearbook-brown/10 text-yearbook-brown pointer-events-auto ${
-                  currentPage === messageData.length - 1 ? 'opacity-30 cursor-not-allowed' : 'opacity-100 cursor-pointer hover:bg-yearbook-brown/20'
+                className={`p-3 rounded-full bg-black/30 text-white pointer-events-auto ${
+                  currentPage === messageData.length - 1 ? 'opacity-30 cursor-not-allowed' : 'opacity-100 cursor-pointer hover:bg-black/40'
                 }`}
               >
                 <ChevronRight className="w-6 h-6" />

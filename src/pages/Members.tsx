@@ -3,6 +3,8 @@ import { useState } from "react";
 import PageTransition from "../components/PageTransition";
 import YearbookLayout from "../components/YearbookLayout";
 import { motion } from "framer-motion";
+import { Instagram, MessageCircle } from "lucide-react";
+import AudioPlayer from "../components/AudioPlayer";
 
 // Sample student data (placeholder)
 const students = Array.from({ length: 36 }, (_, index) => ({
@@ -10,7 +12,8 @@ const students = Array.from({ length: 36 }, (_, index) => ({
   name: `Student ${index + 1}`,
   photo: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
   quote: "\"The future belongs to those who believe in the beauty of their dreams.\"",
-  instagram: "@student" + (index + 1)
+  instagram: "student" + (index + 1),
+  whatsapp: "62812345678" + (index < 10 ? "0" + (index + 1) : (index + 1))
 }));
 
 const containerVariants = {
@@ -42,6 +45,9 @@ const Members = () => {
   return (
     <PageTransition>
       <YearbookLayout title="Members">
+        {/* Background Music Player */}
+        <AudioPlayer audioSrc="/lovable-uploads/members-background.mp3" />
+        
         <div className="py-4">
           <motion.div
             variants={containerVariants}
@@ -66,7 +72,7 @@ const Members = () => {
                 </div>
                 <div className="p-3 bg-yearbook-gold/5">
                   <h3 className="font-medium text-yearbook-brown truncate">{student.name}</h3>
-                  <p className="text-yearbook-brown/70 text-sm truncate">{student.instagram}</p>
+                  <p className="text-yearbook-brown/70 text-sm truncate">@{student.instagram}</p>
                 </div>
               </motion.div>
             ))}
@@ -98,12 +104,37 @@ const Members = () => {
                 <h2 className="text-2xl font-semibold text-yearbook-brown mb-2">
                   {selectedStudent.name}
                 </h2>
-                <p className="text-yearbook-brown/80 italic mb-4">
-                  {selectedStudent.quote}
-                </p>
-                <p className="text-yearbook-brown/70">
-                  {selectedStudent.instagram}
-                </p>
+                
+                {/* Quote Section */}
+                <div className="mb-6 p-4 bg-yearbook-gold/5 rounded-lg border border-yearbook-gold/10">
+                  <p className="text-yearbook-brown/80 italic">
+                    {selectedStudent.quote}
+                  </p>
+                </div>
+                
+                {/* Social Media Links */}
+                <div className="space-y-3">
+                  <a 
+                    href={`https://instagram.com/${selectedStudent.instagram}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-yearbook-brown/70 hover:text-yearbook-brown"
+                  >
+                    <Instagram className="w-5 h-5 text-yearbook-brown" />
+                    <span>@{selectedStudent.instagram}</span>
+                  </a>
+                  
+                  <a 
+                    href={`https://wa.me/${selectedStudent.whatsapp}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-yearbook-brown/70 hover:text-yearbook-brown"
+                  >
+                    <MessageCircle className="w-5 h-5 text-yearbook-brown" />
+                    <span>+{selectedStudent.whatsapp}</span>
+                  </a>
+                </div>
+                
                 <button
                   onClick={() => setSelectedStudent(null)}
                   className="mt-6 px-4 py-2 bg-yearbook-gold text-white rounded-full w-full"
