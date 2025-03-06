@@ -21,6 +21,7 @@ const AudioPlayer = ({ audioSrc, autoPlay = true }: AudioPlayerProps) => {
           playPromise
             .then(() => {
               // Autoplay started
+              console.log("Audio playing successfully");
             })
             .catch(error => {
               // Autoplay was prevented
@@ -33,6 +34,30 @@ const AudioPlayer = ({ audioSrc, autoPlay = true }: AudioPlayerProps) => {
       }
     }
   }, [isPlaying, audioSrc]);
+
+  // Make sure audio continues playing when component re-renders
+  useEffect(() => {
+    // Setup event listener for when audio has loaded
+    const handleCanPlay = () => {
+      if (isPlaying && audioRef.current) {
+        audioRef.current.play().catch(error => {
+          console.log("Audio play error:", error);
+          setIsPlaying(false);
+        });
+      }
+    };
+
+    const audioElement = audioRef.current;
+    if (audioElement) {
+      audioElement.addEventListener('canplay', handleCanPlay);
+    }
+
+    return () => {
+      if (audioElement) {
+        audioElement.removeEventListener('canplay', handleCanPlay);
+      }
+    };
+  }, [isPlaying]);
 
   const togglePlayback = () => {
     setIsPlaying(!isPlaying);

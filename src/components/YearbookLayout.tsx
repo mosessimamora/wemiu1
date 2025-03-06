@@ -35,8 +35,8 @@ const YearbookLayout = ({ children, showNav = true, title }: YearbookLayoutProps
       <div className="absolute top-20 left-10 w-40 h-40 rounded-full bg-yearbook-gold/5 blur-3xl -z-5"></div>
       <div className="absolute bottom-20 right-10 w-60 h-60 rounded-full bg-yearbook-gold/5 blur-3xl -z-5"></div>
       
-      {/* Header */}
-      {title && (
+      {/* Only show header if title is provided and not empty */}
+      {title && title.trim() !== "" && (
         <div className="flex items-center justify-between p-6">
           <Link to="/" className="flex items-center">
             <motion.div 
