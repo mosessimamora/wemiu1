@@ -67,12 +67,12 @@ const Index = () => {
         </motion.div>
         
         {/* Subtitle */}
-        <motion.p 
+        <motion.h2 
           variants={itemVariants} 
           className="text-yearbook-brown/80 mb-1"
         >
           XII-1 Online Yearbook
-        </motion.p>
+        </motion.h2>
         
         {/* Main Title */}
         <motion.h1 
@@ -94,7 +94,7 @@ const Index = () => {
               whileTap="tap"
               className="w-full flex items-center justify-center bg-yearbook-gold text-white px-6 py-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
             >
-              <span className="text-lg font-medium mr-2">Messages</span>
+              <span className="text-lg font-medium mr-2">Sebuah Pesan Untukmu!</span>
               <MessageCircle className="w-5 h-5" />
             </motion.button>
           </Link>
@@ -106,7 +106,7 @@ const Index = () => {
               whileTap="tap"
               className="w-full flex items-center justify-center bg-yearbook-gold text-white px-6 py-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
             >
-              <span className="text-lg font-medium mr-2">Members</span>
+              <span className="text-lg font-medium mr-2">Anggota Kelas</span>
               <Users className="w-5 h-5" />
             </motion.button>
           </Link>
@@ -118,7 +118,7 @@ const Index = () => {
               whileTap="tap"
               className="w-full flex items-center justify-center bg-yearbook-gold text-white px-6 py-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
             >
-              <span className="text-lg font-medium mr-2">Memories</span>
+              <span className="text-lg font-medium mr-2">Kenangan Kita</span>
               <Image className="w-5 h-5" />
             </motion.button>
           </Link>
@@ -129,7 +129,7 @@ const Index = () => {
           variants={itemVariants}
           className="mt-12 text-sm text-yearbook-brown/60 max-w-sm"
         >
-          open jasa pembuatan website chat instagram : @mosesds_
+          made with love by Moses Simamora
         </motion.p>
       </motion.div>
     </div>
