@@ -38,7 +38,7 @@ const students = [
     id: 2,
     name: "Celine Su",
     photos: [
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Celine.JPG",
       "https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -50,7 +50,7 @@ const students = [
     id: 3,
     name: "Eileen Halona",
     photos: [
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Eileen.JPG",
       "https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1507038732509-8b1a9623223a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -62,7 +62,7 @@ const students = [
     id: 4,
     name: "Estherrina Daisuly Lumban Tobing",
     photos: [
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Esther.JPG",
       "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1505033575518-a36ea2ef75ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -74,7 +74,7 @@ const students = [
     id: 5,
     name: "Jolin Grace Djauhari",
     photos: [
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Jolin.JPG",
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1520341280432-4749d4d7bcf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -86,7 +86,7 @@ const students = [
     id: 6,
     name: "Jolleane Princessa Laurent",
     photos: [
-      "https://images.unsplash.com/photo-1530021232320-687d8e3dba54?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Jolleane.JPG",
       "https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1513379733131-47fc74b45fc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -100,7 +100,7 @@ const students = [
     id: 7,
     name: "Jollyn Elicia Candra",
     photos: [
-      "https://images.unsplash.com/photo-1500048993953-d23a436266cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Jollyn.JPG",
       "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -112,7 +112,7 @@ const students = [
     id: 8,
     name: "Kayleen Noviten",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Kayleen.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -124,7 +124,7 @@ const students = [
     id: 9,
     name: "Keisha Meilya Putri Br. Sitepu",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Keisha.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -136,7 +136,7 @@ const students = [
     id: 10,
     name: "Miranda Kezia Agatha Rajagukguk",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Miranda.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -148,7 +148,7 @@ const students = [
     id: 11,
     name: "Nathania Delphinne Felim",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Nathania.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -160,7 +160,7 @@ const students = [
     id: 12,
     name: "Ririn Ria Asnila Saragih",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Ririn.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -172,7 +172,7 @@ const students = [
     id: 13,
     name: "Sandra Micelle Imanuella Parapat",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Sandra.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -184,7 +184,7 @@ const students = [
     id: 14,
     name: "Vallerine Angelica Kuok",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Vallerine.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -196,7 +196,7 @@ const students = [
     id: 15,
     name: "Victoria Rickie",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Victoria.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -208,7 +208,7 @@ const students = [
     id: 16,
     name: "Winda Tresia Br. Panjaitan",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Winda.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -220,7 +220,7 @@ const students = [
     id: 17,
     name: "Chrestellyo Surya Wijaya",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Chrestellyo.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -232,7 +232,7 @@ const students = [
     id: 18,
     name: "Gavin Thedrico",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Gavin.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -244,7 +244,7 @@ const students = [
     id: 19,
     name: "Giovello",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Giovello.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -256,7 +256,7 @@ const students = [
     id: 20,
     name: "Jefferson Tandy",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Jefferson.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -268,7 +268,7 @@ const students = [
     id: 21,
     name: "Joshua Michael Isakhar Simanungkalit",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Joshua.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -280,7 +280,7 @@ const students = [
     id: 22,
     name: "Jovan Ricardo",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Jovan.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -292,7 +292,7 @@ const students = [
     id: 23,
     name: "Kristian Minoto Cuang",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Kristian.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -304,7 +304,7 @@ const students = [
     id: 24,
     name: "Manuel Otto Chandra",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Manuel.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -316,7 +316,7 @@ const students = [
     id: 25,
     name: "Moses Dominggus Simamora",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Moses.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -328,7 +328,7 @@ const students = [
     id: 26,
     name: "Nathanael Sebastian Hutabalian Sagala",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Nathanael.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -340,7 +340,7 @@ const students = [
     id: 27,
     name: "Nick James Chadwick Panjaitan",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Nick.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -352,7 +352,7 @@ const students = [
     id: 28,
     name: "Okto Christian Fang",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Okto.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -364,7 +364,7 @@ const students = [
     id: 29,
     name: "Raymond Zebua",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Raymond.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -376,7 +376,7 @@ const students = [
     id: 30,
     name: "Raywen Tayrin",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Raywen.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -388,7 +388,7 @@ const students = [
     id: 31,
     name: "Rio Fernaldy",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Rio.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -400,7 +400,7 @@ const students = [
     id: 32,
     name: "Rowlly Santiono",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Rowlly.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -412,7 +412,7 @@ const students = [
     id: 33,
     name: "Tobias Situmorang",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Tobias.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -424,7 +424,7 @@ const students = [
     id: 34,
     name: "Wilbert Launata",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Wilbert.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -436,7 +436,7 @@ const students = [
     id: 35,
     name: "Wilson Khosasi",
     photos: [
-      "https://images.unsplash.com/photo-1499887142886-791eca5918cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/Wilson.JPG",
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
@@ -448,26 +448,6 @@ const students = [
   // For brevity, I'll complete with placeholder data, in a real implementation
   // you would want unique data for all 36 students
 ];
-
-// Fill remaining students with placeholder data if needed
-if (students.length < 36) {
-  for (let i = students.length; i < 36; i++) {
-    students.push({
-      id: i + 1,
-      name: `Student ${i + 1}`,
-      photos: [
-        "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-        "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-      ],
-      quote: "\"The future belongs to those who believe in the beauty of their dreams.\"",
-      instagram: "student" + (i + 1),
-      whatsapp: "62812345678" + (i < 10 ? "0" + (i + 1) : (i + 1))
-    });
-  }
-}
 
 const containerVariants = {
   hidden: { opacity: 0 },
