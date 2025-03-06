@@ -10,52 +10,52 @@ import AudioPlayer from "../components/AudioPlayer";
 const messageData = [
   {
     id: 1,
-    backgroundImage: "/GIovello.JPG&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/GIovello.JPG",
     message: "selamat berpisah teman teman!"
   },
   {
     id: 2,
-    backgroundImage: "/Tobias.JPG&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/Tobias.JPG",
     message: "see u on top"
   },
   {
     id: 3,
-    backgroundImage: "/Moses.JPG&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/Moses.JPG",
     message: "i love you"
   },
   {
     id: 4,
-    backgroundImage: "/Gavin.JPG&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/Gavin.JPG",
     message: "semoga bisa masuk universitas impian"
   },
   {
     id: 5,
-    backgroundImage: "/Nathanael.JPG&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/Nathanael.JPG",
     message: "jangan lupa sama metho"
   },
   {
     id: 6,
-    backgroundImage: "/Okto.JPG&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/Okto.JPG",
     message: "tidak terasa 3 tahun berlalu begitu cepat"
   },
   {
     id: 7,
-    backgroundImage: "/Raywen.JPG&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/Raywen.JPG",
     message: "ingin rasanya memutar waktu kembali"
   },
   {
     id: 8,
-    backgroundImage: "/Rowlly.JPG&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/Rowlly.JPG",
     message: "tapi boong"
   },
   {
     id: 9,
-    backgroundImage: "/Joshua.JPG&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/Joshua.JPG",
     message: "awkaokwokao"
   },
   {
     id: 10,
-    backgroundImage: "/Manuel.JPG&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/Manuel.JPG",
     message: "sukses selalu guyss!"
   }
 ];
