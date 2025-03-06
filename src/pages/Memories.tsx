@@ -9,40 +9,40 @@ import AudioPlayer from "../components/AudioPlayer";
 const memoryCategories = [
   {
     id: "school-events",
-    title: "School Events",
-    description: "Special moments from our school events and ceremonies",
+    title: "Kelas 11",
+    description: "Foto foto kita waktu kelas 11",
     images: Array.from({ length: 6 }, (_, index) => ({
-      id: `event-${index + 1}`,
+      id: `kelas11-${index + 1}`,
       url: `https://images.unsplash.com/photo-${1560000000000 + index * 10000}?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80`,
       description: `School event #${index + 1} - Wonderful moments we shared together.`
     }))
   },
   {
     id: "class-activities",
-    title: "Class Activities",
-    description: "Fun activities and learning experiences in our classroom",
+    title: "Kelas 12",
+    description: "Foto Foto Kita waktu kelas 12",
     images: Array.from({ length: 6 }, (_, index) => ({
-      id: `class-${index + 1}`,
+      id: `kelas12-${index + 1}`,
       url: `https://images.unsplash.com/photo-${1561000000000 + index * 10000}?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80`,
       description: `Class activity #${index + 1} - Learning together, growing together.`
     }))
   },
   {
     id: "field-trips",
-    title: "Field Trips",
-    description: "Exploring the world outside our classroom",
+    title: "Perpisahan",
+    description: "Perpisahan di Samosir!",
     images: Array.from({ length: 6 }, (_, index) => ({
-      id: `trip-${index + 1}`,
+      id: `perpisahan-${index + 1}`,
       url: `https://images.unsplash.com/photo-${1562000000000 + index * 10000}?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80`,
       description: `Field trip #${index + 1} - Broadening our horizons and exploring new places.`
     }))
   },
   {
     id: "sports",
-    title: "Sports & Games",
-    description: "Athletic achievements and fun competitions",
+    title: "Natal",
+    description: "Natal Sekolah!",
     images: Array.from({ length: 6 }, (_, index) => ({
-      id: `sport-${index + 1}`,
+      id: `natal-${index + 1}`,
       url: `https://images.unsplash.com/photo-${1563000000000 + index * 10000}?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80`,
       description: `Sports moment #${index + 1} - Building teamwork and pushing our limits.`
     }))
