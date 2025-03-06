@@ -1,4 +1,4 @@
-import { AudioProvider } from "../context/AudioContext";
+import { AudioProvider } from "../context/AudioContext.tsx";
 import { ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { MessageCircle, Users, Image, ChevronLeft } from "lucide-react";
