@@ -516,7 +516,7 @@ const Members = () => {
               className="w-full max-w-3xl mx-auto"
               onClick={() => setSelectedStudent(teacher)}
             >
-              <div className="aspect-[4/3] overflow-hidden bg-yearbook-gold/10 rounded-lg">
+              <div className="aspect-[3/4] overflow-hidden bg-yearbook-gold/10 rounded-lg">
                 <img
                   src={teacher.photos[0]}
                   alt={teacher.name}
@@ -546,7 +546,7 @@ const Members = () => {
                 className="student-card"
                 onClick={() => setSelectedStudent(student)}
               >
-                <div className="aspect-square overflow-hidden bg-yearbook-gold/10">
+                <div className="aspect-[3/4] overflow-hidden bg-yearbook-gold/10">
                   <img
                     src={student.photos[0]}
                     alt={student.name}
