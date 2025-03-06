@@ -65,7 +65,7 @@ const AudioPlayer = ({ audioSrc, autoPlay = true }: AudioPlayerProps) => {
 
   return (
     <div className="fixed bottom-20 right-6 z-40">
-      <audio ref={audioRef} src={audioSrc} loop />
+      <audio ref={audioRef} src="/music.mp3" loop />
       <button 
         onClick={togglePlayback}
         className="p-3 rounded-full bg-yearbook-brown text-white shadow-md hover:bg-yearbook-brown/90"
