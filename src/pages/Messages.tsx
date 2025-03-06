@@ -10,52 +10,52 @@ import AudioPlayer from "../components/AudioPlayer";
 const messageData = [
   {
     id: 1,
-    backgroundImage: "https://images.unsplash.com/photo-1517486808906-6ca8b3f8e1c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/GIovello.JPG&auto=format&fit=crop&w=1950&q=80",
     message: "selamat berpisah teman teman!"
   },
   {
     id: 2,
-    backgroundImage: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/Tobias.JPG&auto=format&fit=crop&w=1950&q=80",
     message: "see u on top"
   },
   {
     id: 3,
-    backgroundImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/Moses.JPG&auto=format&fit=crop&w=1950&q=80",
     message: "i love you"
   },
   {
     id: 4,
-    backgroundImage: "https://images.unsplash.com/photo-1501349800519-48093d60bde0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/Gavin.JPG&auto=format&fit=crop&w=1950&q=80",
     message: "semoga bisa masuk universitas impian"
   },
   {
     id: 5,
-    backgroundImage: "https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/Nathanael.JPG&auto=format&fit=crop&w=1950&q=80",
     message: "jangan lupa sama metho"
   },
   {
     id: 6,
-    backgroundImage: "https://images.unsplash.com/photo-1505245208761-ba872912fac0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/Okto.JPG&auto=format&fit=crop&w=1950&q=80",
     message: "tidak terasa 3 tahun berlalu begitu cepat"
   },
   {
     id: 7,
-    backgroundImage: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/Raywen.JPG&auto=format&fit=crop&w=1950&q=80",
     message: "ingin rasanya memutar waktu kembali"
   },
   {
     id: 8,
-    backgroundImage: "https://images.unsplash.com/photo-1570215174562-8a176b46af8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/Rowlly.JPG&auto=format&fit=crop&w=1950&q=80",
     message: "tapi boong"
   },
   {
     id: 9,
-    backgroundImage: "https://images.unsplash.com/photo-1569683795645-b62e50fbf103?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/Joshua.JPG&auto=format&fit=crop&w=1950&q=80",
     message: "awkaokwokao"
   },
   {
     id: 10,
-    backgroundImage: "https://images.unsplash.com/photo-1533287486341-f1383dea5388?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+    backgroundImage: "/Manuel.JPG&auto=format&fit=crop&w=1950&q=80",
     message: "sukses selalu guyss!"
   }
 ];
