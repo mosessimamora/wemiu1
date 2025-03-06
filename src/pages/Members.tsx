@@ -11,7 +11,7 @@ const teacher = {
   id: 0,
   name: "Meiria Jolina Tarigan, M.Pd",
   photos: [
-    "/Meiria.JPG",
+    "/Meiria.JPG&auto=format&fit=crop&w=1350&q=80",
     "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
   ],
