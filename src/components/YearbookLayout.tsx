@@ -66,7 +66,7 @@ const YearbookLayout = ({ children, showNav = true, title }: YearbookLayoutProps
         {children}
       </main>
       
-      {/* Navigation */}
+      {/* Navigation - updated to center text and icon alignment */}
       {showNav && (
         <motion.nav 
           initial={{ y: 100 }}
@@ -76,15 +76,15 @@ const YearbookLayout = ({ children, showNav = true, title }: YearbookLayoutProps
         >
           <Link to="/messages" className={`flex flex-col items-center gap-1 yearbook-nav-button ${location.pathname === '/messages' ? 'text-yearbook-gold' : 'text-white'}`}>
             <MessageCircle className="w-6 h-6" />
-            <span className="text-xs">Messages</span>
+            <span className="text-xs text-center">Messages</span>
           </Link>
           <Link to="/members" className={`flex flex-col items-center gap-1 yearbook-nav-button ${location.pathname === '/members' ? 'text-yearbook-gold' : 'text-white'}`}>
             <Users className="w-6 h-6" />
-            <span className="text-xs">Members</span>
+            <span className="text-xs text-center">Members</span>
           </Link>
           <Link to="/memories" className={`flex flex-col items-center gap-1 yearbook-nav-button ${location.pathname === '/memories' ? 'text-yearbook-gold' : 'text-white'}`}>
             <Image className="w-6 h-6" />
-            <span className="text-xs">Memories</span>
+            <span className="text-xs text-center">Members</span>
           </Link>
         </motion.nav>
       )}

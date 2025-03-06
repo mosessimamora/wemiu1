@@ -54,12 +54,16 @@ const Index = () => {
         variants={containerVariants}
         className="flex flex-col items-center text-center px-6 z-10"
       >
-        {/* Logo Placeholder - replace with actual logo later */}
+        {/* Logo - updated to use the provided image */}
         <motion.div 
           variants={itemVariants}
-          className="w-24 h-24 rounded-full bg-yearbook-gold/20 flex items-center justify-center mb-6"
+          className="mb-6"
         >
-          <span className="text-yearbook-brown text-2xl font-bold">LOGO</span>
+          <img 
+            src="/lovable-uploads/e6625db0-7317-40aa-8a24-675d2cac6260.png" 
+            alt="EMWC Logo" 
+            className="w-40 h-auto" 
+          />
         </motion.div>
         
         {/* Subtitle */}
@@ -78,7 +82,7 @@ const Index = () => {
           The Wemiu Class
         </motion.h1>
         
-        {/* Navigation Buttons */}
+        {/* Navigation Buttons - updated to center text */}
         <motion.div 
           variants={itemVariants}
           className="flex flex-col gap-4 w-full max-w-xs"
@@ -88,9 +92,9 @@ const Index = () => {
               variants={buttonVariants}
               whileHover="hover"
               whileTap="tap"
-              className="w-full flex items-center justify-between bg-yearbook-gold text-white px-6 py-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
+              className="w-full flex items-center justify-center bg-yearbook-gold text-white px-6 py-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
             >
-              <span className="text-lg font-medium">Messages</span>
+              <span className="text-lg font-medium mr-2">Messages</span>
               <MessageCircle className="w-5 h-5" />
             </motion.button>
           </Link>
@@ -100,9 +104,9 @@ const Index = () => {
               variants={buttonVariants}
               whileHover="hover"
               whileTap="tap"
-              className="w-full flex items-center justify-between bg-yearbook-gold text-white px-6 py-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
+              className="w-full flex items-center justify-center bg-yearbook-gold text-white px-6 py-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
             >
-              <span className="text-lg font-medium">Members</span>
+              <span className="text-lg font-medium mr-2">Members</span>
               <Users className="w-5 h-5" />
             </motion.button>
           </Link>
@@ -112,9 +116,9 @@ const Index = () => {
               variants={buttonVariants}
               whileHover="hover"
               whileTap="tap"
-              className="w-full flex items-center justify-between bg-yearbook-gold text-white px-6 py-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
+              className="w-full flex items-center justify-center bg-yearbook-gold text-white px-6 py-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
             >
-              <span className="text-lg font-medium">Memories</span>
+              <span className="text-lg font-medium mr-2">Memories</span>
               <Image className="w-5 h-5" />
             </motion.button>
           </Link>
