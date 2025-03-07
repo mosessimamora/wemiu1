@@ -24,7 +24,7 @@ const routeMusicMap: Record<string, string> = {
   "/members": "/music.mp3",
   "/messages": "/music.mp3",
   "/memories": "/music.mp3",
-  "/hangman": "/lovable/quiz-music.mp3",
+  "/hangman": "/lovable-uploads/quiz-music.mp3",
 };
 
 export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
