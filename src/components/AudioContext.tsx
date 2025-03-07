@@ -1,4 +1,3 @@
-
 "use client";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
@@ -7,6 +6,7 @@ import { useLocation } from "react-router-dom";
 interface AudioContextProps {
   isPlaying: boolean;
   togglePlayback: () => void;
+  currentMusic: string;
 }
 
 const AudioContext = createContext<AudioContextProps | undefined>(undefined);
@@ -19,29 +19,59 @@ export const useAudio = () => {
   return context;
 };
 
+const routeMusicMap: Record<string, string> = {
+  "/": "/music.mp3",
+  "/members": "/music.mp3",
+  "/messages": "/music.mp3",
+  "/memories": "/music.mp3",
+  "/hangman": "/music.mp3",
+};
+
 export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(true); // Default to playing
   const location = useLocation();
+  const [currentMusic, setCurrentMusic] = useState<string>("/music.mp3");
 
   useEffect(() => {
-    // Create audio element if it doesn't exist
+    const musicForRoute = routeMusicMap[location.pathname] || "/music.mp3";
+    setCurrentMusic(musicForRoute);
+
     if (!audioRef.current) {
-      audioRef.current = new Audio("/music.mp3");
+      audioRef.current = new Audio(musicForRoute);
       audioRef.current.loop = true;
+    } else if (audioRef.current.src !== new URL(musicForRoute, window.location.href).href) {
+      const wasPlaying = !audioRef.current.paused;
+      audioRef.current.pause();
+      audioRef.current.src = musicForRoute;
+      
+      if (wasPlaying) {
+        const playPromise = audioRef.current.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(error => {
+            console.log("Audio play error:", error);
+            setIsPlaying(false);
+          });
+        }
+      }
     }
 
-    // Autoplay when component mounts
-    const playPromise = audioRef.current.play();
-    
-    // Handle autoplay restrictions
-    if (playPromise !== undefined) {
-      playPromise.catch((error) => {
-        console.log("Audio autoplay prevented:", error);
-        setIsPlaying(false);
-      });
+    if (isPlaying && audioRef.current) {
+      const playPromise = audioRef.current.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.log("Audio autoplay prevented:", error);
+          setIsPlaying(false);
+        });
+      }
     }
 
+    return () => {
+    };
+  }, [location.pathname]);
+
+  useEffect(() => {
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();
@@ -65,7 +95,7 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <AudioContext.Provider value={{ isPlaying, togglePlayback }}>
+    <AudioContext.Provider value={{ isPlaying, togglePlayback, currentMusic }}>
       {children}
       <div className="fixed bottom-20 right-6 z-40">
         <button

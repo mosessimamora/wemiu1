@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import PageTransition from "../components/PageTransition";
 import YearbookLayout from "../components/YearbookLayout";
@@ -462,4 +463,129 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.4 }
+  }
+};
+
+const Members = () => {
+  const [showTeacher, setShowTeacher] = useState(true);
+  
+  return (
+    <PageTransition>
+      <YearbookLayout title="Wemiu Class">
+        {/* Audio Player for this page */}
+        <AudioPlayer audioSrc="/music.mp3" />
+        
+        <div className="pb-20">
+          {/* Toggle buttons */}
+          <div className="flex justify-center space-x-4 mb-8">
+            <button
+              onClick={() => setShowTeacher(true)}
+              className={`px-6 py-2 rounded-full ${
+                showTeacher 
+                  ? "bg-yearbook-gold text-white" 
+                  : "bg-yearbook-gold/20 text-yearbook-brown"
+              }`}
+            >
+              Teacher
+            </button>
+            <button
+              onClick={() => setShowTeacher(false)}
+              className={`px-6 py-2 rounded-full ${
+                !showTeacher 
+                  ? "bg-yearbook-gold text-white" 
+                  : "bg-yearbook-gold/20 text-yearbook-brown"
+              }`}
+            >
+              Students
+            </button>
+          </div>
+          
+          {/* Teacher section */}
+          {showTeacher ? (
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+              className="max-w-md mx-auto"
+            >
+              <motion.div
+                variants={itemVariants}
+                className="bg-white rounded-xl shadow-lg overflow-hidden mb-8"
+              >
+                <div className="relative">
+                  <img 
+                    src={teacher.photos[0]} 
+                    alt={teacher.name}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+                
+                <div className="p-6">
+                  <h2 className="text-xl font-semibold text-yearbook-brown mb-2">{teacher.name}</h2>
+                  
+                  <p className="text-yearbook-brown/80 mb-4">{teacher.quote}</p>
+                  
+                  <div className="flex justify-center space-x-4">
+                    <a 
+                      href={`https://instagram.com/${teacher.instagram}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-full bg-yearbook-gold/10 text-yearbook-brown hover:bg-yearbook-gold/20"
+                    >
+                      <Instagram size={20} />
+                    </a>
+                    <a 
+                      href={`https://wa.me/${teacher.whatsapp}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-full bg-yearbook-gold/10 text-yearbook-brown hover:bg-yearbook-gold/20"
+                    >
+                      <MessageCircle size={20} />
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          ) : (
+            /* Students grid */
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+              className="grid grid-cols-2 md:grid-cols-3 gap-4 px-4"
+            >
+              {students.map((student) => (
+                <motion.div
+                  key={student.id}
+                  variants={itemVariants}
+                  className="bg-white rounded-lg shadow overflow-hidden"
+                >
+                  <div className="relative w-full pt-[100%]">
+                    <img 
+                      src={student.photos[0]} 
+                      alt={student.name}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  </div>
+                  
+                  <div className="p-3">
+                    <h3 className="text-sm font-medium text-yearbook-brown truncate">
+                      {student.name}
+                    </h3>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
+        </div>
+      </YearbookLayout>
+    </PageTransition>
+  );
+};
+
+export default Members;

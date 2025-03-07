@@ -39,8 +39,9 @@ const YearbookLayout = ({ children, showNav = true, title }: YearbookLayoutProps
       
       {/* Only show header if title is provided and not empty */}
       {title && title.trim() !== "" && (
-        <div className="flex items-center justify-between p-6">
-          <Link to="/" className="flex items-center">
+        <div className="flex items-center p-6 relative">
+          {/* Back button aligned to the left */}
+          <Link to="/" className="flex items-center z-10">
             <motion.div 
               initial="hidden"
               animate="visible"
@@ -51,15 +52,16 @@ const YearbookLayout = ({ children, showNav = true, title }: YearbookLayoutProps
               <span className="text-yearbook-brown font-medium">Back</span>
             </motion.div>
           </Link>
+          
+          {/* Title centered regardless of back button */}
           <motion.h1
             initial="hidden"
             animate="visible"
             variants={headerVariants}
-            className="text-2xl font-semibold text-center text-yearbook-brown absolute left-1/2 transform -translate-x-1/2"
+            className="text-2xl font-semibold text-center text-yearbook-brown absolute left-0 right-0 mx-auto"
           >
             {title}
           </motion.h1>
-          <div className="w-20"></div> {/* Spacer for centering */}
         </div>
       )}
       

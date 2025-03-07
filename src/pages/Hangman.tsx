@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import PageTransition from "../components/PageTransition";
 import YearbookLayout from "../components/YearbookLayout";
 import { motion } from "framer-motion";
+import AudioPlayer from "../components/AudioPlayer";
 
 // Sample quizzes with hints and images
 const quizzes = [
@@ -83,6 +84,9 @@ const QuizGame = () => {
   return (
     <PageTransition>
       <YearbookLayout title="Guess Who?">
+        {/* Audio Player for this page */}
+        <AudioPlayer audioSrc="/music.mp3" />
+        
         <div className="max-w-2xl mx-auto py-8 px-4">
           {/* Quiz navigation - now just shows the quiz number */}
           <div className="flex justify-center items-center mb-6">
@@ -102,18 +106,20 @@ const QuizGame = () => {
               </p>
             </div>
             
-            {/* Image appears only after answering - fixed to show full image */}
+            {/* Image appears only after answering - Changed to object-contain to show full image */}
             {gameStatus !== "playing" && (
               <motion.div 
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="w-full max-w-md mx-auto rounded-xl overflow-hidden mb-3"
+                className="w-full flex justify-center items-center"
               >
-                <img 
-                  src={currentQuiz.image} 
-                  alt="Person" 
-                  className="w-full h-auto object-contain"
-                />
+                <div className="w-full max-w-md mx-auto rounded-xl overflow-hidden mb-3">
+                  <img 
+                    src={currentQuiz.image} 
+                    alt="Person" 
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
               </motion.div>
             )}
           </div>
@@ -164,7 +170,7 @@ const QuizGame = () => {
               </div>
             </form>
           ) : (
-            /* Show Next Quiz and Try Again buttons after answering */
+            /* Show Next Quiz and Try Again buttons after answering - regardless of correct/wrong */
             <div className="flex flex-col space-y-4 items-center">
               {currentQuizIndex < quizzes.length - 1 && (
                 <button
