@@ -1,40 +1,35 @@
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import PageTransition from "../components/PageTransition";
 import YearbookLayout from "../components/YearbookLayout";
 import { motion } from "framer-motion";
 
-// Sample quizzes with hints
+// Sample quizzes with hints and images
 const quizzes = [
   {
-    word: "MEMORIES",
-    hint: "What we're collecting in this yearbook",
-    image: "/lovable-uploads/e6625db0-7317-40aa-8a24-675d2cac6260.png",
-    letters: 8
+    word: "MOSES",
+    hint: "Known for coding skills but didn't get into STEI-K ITB",
+    image: "/Moses.jpg"
   },
   {
-    word: "FRIENDSHIP",
-    hint: "The bond that keeps us together",
-    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    letters: 10
+    word: "MEIRIA",
+    hint: "Our lovely teacher who guides us through our journey",
+    image: "/Meiria.jpg"
   },
   {
-    word: "GRADUATION",
-    hint: "The ceremony we're all looking forward to",
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    letters: 10
+    word: "CECILLIA",
+    hint: "A student whose name starts with C and ends with A",
+    image: "/Cecillia.jpg"
   },
   {
-    word: "LEARNING",
-    hint: "What we did together for years",
-    image: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    letters: 8
+    word: "JOVANNY",
+    hint: "One of the boys with a name that starts with J",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
   },
   {
-    word: "TEACHERS",
-    hint: "Those who guided us through our journey",
-    image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    letters: 8
+    word: "KEISHA",
+    hint: "A student with Sitepu as part of her name",
+    image: "/Keisha.jpg"
   }
 ];
 
@@ -42,15 +37,13 @@ const QuizGame = () => {
   const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState("");
   const [gameStatus, setGameStatus] = useState<"playing" | "correct" | "wrong">("playing");
-  const [attempts, setAttempts] = useState(0);
   
   const currentQuiz = quizzes[currentQuizIndex];
   
   // Reset game when quiz changes
-  useEffect(() => {
+  useState(() => {
     setUserAnswer("");
     setGameStatus("playing");
-    setAttempts(0);
   }, [currentQuizIndex]);
   
   const handleSubmit = (e: React.FormEvent) => {
@@ -64,34 +57,42 @@ const QuizGame = () => {
     if (normalizedAnswer === normalizedCorrectAnswer) {
       setGameStatus("correct");
     } else {
-      setAttempts(prev => prev + 1);
-      if (attempts >= 2) { // Allow 3 attempts (0, 1, 2)
-        setGameStatus("wrong");
-      }
+      setGameStatus("wrong");
     }
   };
   
   const nextQuiz = () => {
     if (currentQuizIndex < quizzes.length - 1) {
       setCurrentQuizIndex(prev => prev + 1);
+      setGameStatus("playing");
+      setUserAnswer("");
     }
   };
   
   const prevQuiz = () => {
     if (currentQuizIndex > 0) {
       setCurrentQuizIndex(prev => prev - 1);
+      setGameStatus("playing");
+      setUserAnswer("");
     }
   };
   
   const resetQuiz = () => {
     setUserAnswer("");
     setGameStatus("playing");
-    setAttempts(0);
+  };
+  
+  // Create masked word display (M____S)
+  const getMaskedWord = (word: string) => {
+    const firstLetter = word[0];
+    const lastLetter = word[word.length - 1];
+    const middle = "_".repeat(word.length - 2);
+    return `${firstLetter}${middle}${lastLetter}`;
   };
   
   return (
     <PageTransition>
-      <YearbookLayout title="Quiz Game">
+      <YearbookLayout title="Guess Who?">
         <div className="max-w-2xl mx-auto py-8 px-4">
           {/* Quiz navigation */}
           <div className="flex justify-between items-center mb-6">
@@ -124,23 +125,31 @@ const QuizGame = () => {
             </button>
           </div>
           
-          {/* Image hint */}
-          <div className="mb-6">
-            <div className="aspect-video bg-yearbook-gold/10 rounded-xl overflow-hidden mb-3">
-              <img 
-                src={currentQuiz.image} 
-                alt="Hint" 
-                className="w-full h-full object-cover"
-              />
-            </div>
+          {/* Text hint and masked word */}
+          <div className="mb-6 space-y-6">
             <div className="space-y-3">
               <p className="text-center text-yearbook-brown bg-yearbook-gold/10 p-3 rounded-lg">
                 <span className="font-semibold">Hint:</span> {currentQuiz.hint}
               </p>
-              <p className="text-center text-yearbook-brown bg-yearbook-gold/10 p-3 rounded-lg">
-                <span className="font-semibold">Letters:</span> {currentQuiz.letters}
+              <p className="text-center text-2xl font-mono font-bold tracking-wider text-yearbook-brown">
+                {getMaskedWord(currentQuiz.word)}
               </p>
             </div>
+            
+            {/* Image appears only after answering */}
+            {gameStatus !== "playing" && (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="aspect-video bg-yearbook-gold/10 rounded-xl overflow-hidden mb-3"
+              >
+                <img 
+                  src={currentQuiz.image} 
+                  alt="Person" 
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+            )}
           </div>
           
           {/* Game status message */}
@@ -149,8 +158,8 @@ const QuizGame = () => {
               gameStatus === "correct" ? "bg-green-500" : "bg-red-500"
             }`}>
               {gameStatus === "correct" 
-                ? "🎉 Congratulations! Your answer is correct!" 
-                : `😔 Oh no! The correct answer was "${currentQuiz.word}"`
+                ? "🎉 Correct! You guessed it right!" 
+                : `😔 Oops! The correct answer was "${currentQuiz.word}"`
               }
             </div>
           )}
@@ -185,25 +194,21 @@ const QuizGame = () => {
                 >
                   Submit Answer
                 </button>
-                
-                {gameStatus === "playing" && attempts > 0 && (
-                  <p className="text-amber-600 text-center">
-                    Attempts: {attempts}/3
-                  </p>
-                )}
               </div>
             </div>
           </form>
           
           {/* Reset button */}
-          <div className="text-center">
-            <button
-              onClick={resetQuiz}
-              className="px-8 py-3 bg-yearbook-gold text-white rounded-full hover:bg-yearbook-gold/90"
-            >
-              Reset Quiz
-            </button>
-          </div>
+          {gameStatus !== "playing" && (
+            <div className="text-center">
+              <button
+                onClick={resetQuiz}
+                className="px-8 py-3 bg-yearbook-gold text-white rounded-full hover:bg-yearbook-gold/90"
+              >
+                Try Again
+              </button>
+            </div>
+          )}
         </div>
       </YearbookLayout>
     </PageTransition>

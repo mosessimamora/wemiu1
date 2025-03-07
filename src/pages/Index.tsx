@@ -60,7 +60,7 @@ const Index = () => {
           className="mb-6"
         >
           <img 
-            src="/lovable-uploads/e6625db0-7317-40aa-8a24-675d2cac6260.png" 
+            src="/lovable-uploads/6f78b5ca-80f1-4603-928d-bad706f31b75.png" 
             alt="EMWC Logo" 
             className="w-40 h-auto" 
           />
@@ -120,6 +120,18 @@ const Index = () => {
             >
               <span className="text-lg font-medium mr-2">Kenangan Kita</span>
               <Image className="w-5 h-5" />
+            </motion.button>
+          </Link>
+
+          <Link to="/hangman" className="w-full">
+            <motion.button
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
+              className="w-full flex items-center justify-center bg-yearbook-gold text-white px-6 py-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
+            >
+              <span className="text-lg font-medium mr-2">Quiz Game</span>
+              <Users className="w-5 h-5" />
             </motion.button>
           </Link>
         </motion.div>
