@@ -85,7 +85,7 @@ const QuizGame = () => {
     <PageTransition>
       <YearbookLayout title="Tebak Siapa?">
         {/* Audio Player for this page */}
-        <AudioPlayer audioSrc="/music.mp3" />
+        <AudioPlayer audioSrc="/lovable-uploads/quiz-music.mp3" />
         
         <div className="max-w-2xl mx-auto py-8 px-4">
           {/* Quiz navigation - now just shows the quiz number */}
