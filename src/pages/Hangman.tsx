@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PageTransition from "../components/PageTransition";
 import YearbookLayout from "../components/YearbookLayout";
 import { motion } from "framer-motion";
@@ -40,8 +40,8 @@ const QuizGame = () => {
   
   const currentQuiz = quizzes[currentQuizIndex];
   
-  // Reset game when quiz changes
-  useState(() => {
+  // Reset game when quiz changes - fixing the error here
+  useEffect(() => {
     setUserAnswer("");
     setGameStatus("playing");
   }, [currentQuizIndex]);
