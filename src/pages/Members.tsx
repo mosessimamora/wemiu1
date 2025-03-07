@@ -15,7 +15,7 @@ const teacher = {
     "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
   ],
-  birthDate: "01 January 1980",
+  birthDate: "01 January 1901",
   quote: "\"Education is not the filling of a pail, but the lighting of a fire.\"",
   instagram: "meiria_jolina_tarigan",
   whatsapp: "6285236605347"
@@ -31,7 +31,7 @@ const students = [
       "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1504257432389-52343af06ae3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
-    birthDate: "15 March 2006",
+    birthDate: "01 January 1901",
     quote: "\"Lorem ipsum dolor sit amet\"",
     instagram: "cecillia",
     whatsapp: "628123456789"
@@ -44,6 +44,7 @@ const students = [
       "https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
+    birthDate: "01 January 1901",
     quote: "\"Lorem ipsum dolor sit amet\"",
     instagram: "celine",
     whatsapp: "628123456789"
@@ -56,6 +57,7 @@ const students = [
       "https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1507038732509-8b1a9623223a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
+    birthDate: "01 January 1901",
     quote: "\"Lorem ipsum dolor sit amet\"",
     instagram: "eileen",
     whatsapp: "6281234567803"
@@ -68,6 +70,7 @@ const students = [
       "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1505033575518-a36ea2ef75ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
+    birthDate: "01 January 1901",
     quote: "\"DLorem ipsum dolor sit amet\"",
     instagram: "esther",
     whatsapp: "6281234567804"
@@ -80,6 +83,7 @@ const students = [
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1520341280432-4749d4d7bcf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
+    birthDate: "01 January 1901",
     quote: "\"Lorem ipsum dolor sit amet\"",
     instagram: "jolin",
     whatsapp: "6281234567805"
@@ -92,6 +96,7 @@ const students = [
       "https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1513379733131-47fc74b45fc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
+    birthDate: "01 January 1901",
     quote: "\"Lorem ipsum dolor sit amet\"",
     instagram: "jolleane",
     whatsapp: "6281234567806"
@@ -106,6 +111,7 @@ const students = [
       "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
+    birthDate: "01 January 1901",
     quote: "\"Lorem ipsum dolor sit amet\"",
     instagram: "jollyn",
     whatsapp: "6281234567807"
