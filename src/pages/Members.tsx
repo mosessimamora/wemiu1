@@ -1,10 +1,10 @@
-
 import { useState } from "react";
 import PageTransition from "../components/PageTransition";
 import YearbookLayout from "../components/YearbookLayout";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Instagram, MessageCircle } from "lucide-react";
+import { ChevronLeft, ChevronRight, Instagram, MessageCircle, ArrowLeft } from "lucide-react";
 import AudioPlayer from "../components/AudioPlayer";
+import { Link } from "react-router-dom";
 
 // Teacher data
 const teacher = {
@@ -501,11 +501,31 @@ const Members = () => {
     setCurrentPhotoIndex(0);
   };
 
+  // Function to determine button color based on student ID
+  const getButtonColor = (id: number) => {
+    if (id === 0) {
+      return "bg-yearbook-brown text-white hover:bg-yearbook-brown/90"; // Dark brown for teacher
+    } else if (id >= 1 && id <= 16) {
+      return "bg-purple-700 text-white hover:bg-purple-800"; // Dark magenta for students 1-16
+    } else {
+      return "bg-yearbook-gold text-white hover:bg-yearbook-gold/90"; // Default blue for the rest
+    }
+  };
+
   return (
     <PageTransition>
       <YearbookLayout showNav={true} title="">
         {/* Background Music Player */}
         <AudioPlayer audioSrc="/lovable-uploads/members-background.mp3" />
+        
+        {/* Page Header with Title and Back Button */}
+        <div className="flex items-center justify-between mb-6 px-4 py-2 border-b border-yearbook-gold/20">
+          <h1 className="text-2xl sm:text-3xl font-bold text-yearbook-brown">Wemiu Class</h1>
+          <Link to="/" className="flex items-center gap-1 text-yearbook-brown hover:text-yearbook-gold transition-colors">
+            <ArrowLeft size={20} />
+            <span>Back</span>
+          </Link>
+        </div>
         
         <div className="py-4">
           {/* Teacher Section */}
@@ -561,7 +581,7 @@ const Members = () => {
                         e.stopPropagation();
                         setSelectedStudent(teacher);
                       }}
-                      className="mt-3 w-full px-3 py-1.5 bg-yearbook-gold text-white rounded-full text-sm hover:bg-yearbook-gold/90 transition-colors"
+                      className={`mt-3 w-full px-3 py-1.5 ${getButtonColor(teacher.id)} rounded-full text-sm transition-colors`}
                     >
                       Detail
                     </button>
@@ -625,7 +645,7 @@ const Members = () => {
                       e.stopPropagation();
                       setSelectedStudent(student);
                     }}
-                    className="mt-3 w-full px-3 py-1.5 bg-yearbook-gold text-white rounded-full text-sm hover:bg-yearbook-gold/90 transition-colors"
+                    className={`mt-3 w-full px-3 py-1.5 ${getButtonColor(student.id)} rounded-full text-sm transition-colors`}
                   >
                     Detail
                   </button>
