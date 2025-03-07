@@ -1,4 +1,3 @@
-
 import { useState, useCallback } from "react";
 import PageTransition from "../components/PageTransition";
 import YearbookLayout from "../components/YearbookLayout";
@@ -89,7 +88,7 @@ const Memories = () => {
     <PageTransition>
       <YearbookLayout title="Memories">
         {/* Background Music Player */}
-        <AudioPlayer audioSrc="/lovable-uploads/memories-background.mp3" />
+        <AudioPlayer audioSrc="/music.mp3" />
         
         <div className="py-4">
           {/* Category tabs - using button elements with proper event handling */}

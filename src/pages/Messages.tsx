@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import PageTransition from "../components/PageTransition";
@@ -141,7 +140,7 @@ const Messages = () => {
     <PageTransition>
       <YearbookLayout title="Messages" showNav={true}>
         {/* Background Music Player */}
-        <AudioPlayer audioSrc="/lovable-uploads/messages-background.mp3" />
+        <AudioPlayer audioSrc="/music.mp3" />
         
         <div className="flex flex-col items-center justify-center min-h-[80vh] relative px-0">
           {/* Page indicator */}
