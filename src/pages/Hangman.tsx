@@ -8,29 +8,29 @@ import AudioPlayer from "../components/AudioPlayer";
 // Sample quizzes with hints and images
 const quizzes = [
   {
+    word: "GIOVELLO",
+    hint: "suka sama Aurel",
+    image: "/Giovello.jpg"
+  },
+  {
+    word: "WILSON",
+    hint: "Koko BUMN",
+    image: "/Wilson.jpg"
+  },
+  {
+    word: "OKTO",
+    hint: "Pilar ke-4",
+    image: "/Okto.jpg"
+  },
+  {
     word: "MOSES",
-    hint: "Known for coding skills but didn't get into STEI-K ITB",
+    hint: "Abang ganteng yang buat website ini :D",
     image: "/Moses.jpg"
   },
   {
-    word: "MEIRIA",
-    hint: "Our lovely teacher who guides us through our journey",
-    image: "/Meiria.jpg"
-  },
-  {
-    word: "CECILLIA",
-    hint: "A student whose name starts with C and ends with A",
-    image: "/Cecillia.jpg"
-  },
-  {
-    word: "JOVANNY",
-    hint: "One of the boys with a name that starts with J",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-  },
-  {
-    word: "KEISHA",
-    hint: "A student with Sitepu as part of her name",
-    image: "/Keisha.jpg"
+    word: "TOBIAS",
+    hint: "abang UNHAN",
+    image: "/Tobias.jpg"
   }
 ];
 
