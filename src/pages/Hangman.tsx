@@ -1,117 +1,105 @@
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import PageTransition from "../components/PageTransition";
 import YearbookLayout from "../components/YearbookLayout";
 import { motion } from "framer-motion";
 
-// Sample word puzzles with hints
-const puzzles = [
+// Sample quizzes with hints
+const quizzes = [
   {
     word: "MEMORIES",
     hint: "What we're collecting in this yearbook",
-    image: "/lovable-uploads/e6625db0-7317-40aa-8a24-675d2cac6260.png"
+    image: "/lovable-uploads/e6625db0-7317-40aa-8a24-675d2cac6260.png",
+    letters: 8
   },
   {
     word: "FRIENDSHIP",
     hint: "The bond that keeps us together",
-    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    letters: 10
   },
   {
     word: "GRADUATION",
     hint: "The ceremony we're all looking forward to",
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    letters: 10
   },
   {
     word: "LEARNING",
     hint: "What we did together for years",
-    image: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    image: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    letters: 8
   },
   {
     word: "TEACHERS",
     hint: "Those who guided us through our journey",
-    image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    letters: 8
   }
 ];
 
-const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-
-const Hangman = () => {
-  const [currentPuzzleIndex, setCurrentPuzzleIndex] = useState(0);
-  const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
-  const [correctLetters, setCorrectLetters] = useState<string[]>([]);
-  const [wrongLetters, setWrongLetters] = useState<string[]>([]);
-  const [gameStatus, setGameStatus] = useState<"playing" | "won" | "lost">("playing");
+const QuizGame = () => {
+  const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
+  const [userAnswer, setUserAnswer] = useState("");
+  const [gameStatus, setGameStatus] = useState<"playing" | "correct" | "wrong">("playing");
+  const [attempts, setAttempts] = useState(0);
   
-  const currentPuzzle = puzzles[currentPuzzleIndex];
-  const currentWord = currentPuzzle.word;
+  const currentQuiz = quizzes[currentQuizIndex];
   
-  // Reset game when puzzle changes
+  // Reset game when quiz changes
   useEffect(() => {
-    setGuessedLetters([]);
-    setCorrectLetters([]);
-    setWrongLetters([]);
+    setUserAnswer("");
     setGameStatus("playing");
-  }, [currentPuzzleIndex]);
+    setAttempts(0);
+  }, [currentQuizIndex]);
   
-  // Check win/lose conditions
-  useEffect(() => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
     if (gameStatus !== "playing") return;
     
-    // Check if all letters are guessed correctly
-    const isWon = currentWord.split('').every(letter => 
-      guessedLetters.includes(letter)
-    );
+    const normalizedAnswer = userAnswer.trim().toUpperCase();
+    const normalizedCorrectAnswer = currentQuiz.word.toUpperCase();
     
-    if (isWon) {
-      setGameStatus("won");
-    } else if (wrongLetters.length >= 6) { // Allow 6 wrong guesses
-      setGameStatus("lost");
-    }
-  }, [guessedLetters, wrongLetters, currentWord, gameStatus]);
-  
-  const handleLetterClick = useCallback((letter: string) => {
-    if (gameStatus !== "playing" || guessedLetters.includes(letter)) return;
-    
-    const newGuessedLetters = [...guessedLetters, letter];
-    setGuessedLetters(newGuessedLetters);
-    
-    if (currentWord.includes(letter)) {
-      setCorrectLetters(prev => [...prev, letter]);
+    if (normalizedAnswer === normalizedCorrectAnswer) {
+      setGameStatus("correct");
     } else {
-      setWrongLetters(prev => [...prev, letter]);
-    }
-  }, [gameStatus, guessedLetters, currentWord]);
-  
-  const nextPuzzle = () => {
-    if (currentPuzzleIndex < puzzles.length - 1) {
-      setCurrentPuzzleIndex(prev => prev + 1);
+      setAttempts(prev => prev + 1);
+      if (attempts >= 2) { // Allow 3 attempts (0, 1, 2)
+        setGameStatus("wrong");
+      }
     }
   };
   
-  const prevPuzzle = () => {
-    if (currentPuzzleIndex > 0) {
-      setCurrentPuzzleIndex(prev => prev - 1);
+  const nextQuiz = () => {
+    if (currentQuizIndex < quizzes.length - 1) {
+      setCurrentQuizIndex(prev => prev + 1);
     }
   };
   
-  const resetPuzzle = () => {
-    setGuessedLetters([]);
-    setCorrectLetters([]);
-    setWrongLetters([]);
+  const prevQuiz = () => {
+    if (currentQuizIndex > 0) {
+      setCurrentQuizIndex(prev => prev - 1);
+    }
+  };
+  
+  const resetQuiz = () => {
+    setUserAnswer("");
     setGameStatus("playing");
+    setAttempts(0);
   };
   
   return (
     <PageTransition>
-      <YearbookLayout title="Word Puzzle">
+      <YearbookLayout title="Quiz Game">
         <div className="max-w-2xl mx-auto py-8 px-4">
-          {/* Puzzle navigation */}
+          {/* Quiz navigation */}
           <div className="flex justify-between items-center mb-6">
             <button 
-              onClick={prevPuzzle}
-              disabled={currentPuzzleIndex === 0}
+              onClick={prevQuiz}
+              disabled={currentQuizIndex === 0}
               className={`px-4 py-2 rounded-full ${
-                currentPuzzleIndex === 0 
+                currentQuizIndex === 0 
                   ? 'bg-yearbook-gold/30 text-yearbook-brown/50 cursor-not-allowed' 
                   : 'bg-yearbook-gold text-white hover:bg-yearbook-gold/90'
               }`}
@@ -120,14 +108,14 @@ const Hangman = () => {
             </button>
             
             <span className="text-yearbook-brown font-medium">
-              Puzzle {currentPuzzleIndex + 1} of {puzzles.length}
+              Quiz {currentQuizIndex + 1} of {quizzes.length}
             </span>
             
             <button 
-              onClick={nextPuzzle}
-              disabled={currentPuzzleIndex === puzzles.length - 1}
+              onClick={nextQuiz}
+              disabled={currentQuizIndex === quizzes.length - 1}
               className={`px-4 py-2 rounded-full ${
-                currentPuzzleIndex === puzzles.length - 1 
+                currentQuizIndex === quizzes.length - 1 
                   ? 'bg-yearbook-gold/30 text-yearbook-brown/50 cursor-not-allowed' 
                   : 'bg-yearbook-gold text-white hover:bg-yearbook-gold/90'
               }`}
@@ -140,94 +128,80 @@ const Hangman = () => {
           <div className="mb-6">
             <div className="aspect-video bg-yearbook-gold/10 rounded-xl overflow-hidden mb-3">
               <img 
-                src={currentPuzzle.image} 
+                src={currentQuiz.image} 
                 alt="Hint" 
                 className="w-full h-full object-cover"
               />
             </div>
-            <p className="text-center text-yearbook-brown bg-yearbook-gold/10 p-3 rounded-lg">
-              <span className="font-semibold">Hint:</span> {currentPuzzle.hint}
-            </p>
+            <div className="space-y-3">
+              <p className="text-center text-yearbook-brown bg-yearbook-gold/10 p-3 rounded-lg">
+                <span className="font-semibold">Hint:</span> {currentQuiz.hint}
+              </p>
+              <p className="text-center text-yearbook-brown bg-yearbook-gold/10 p-3 rounded-lg">
+                <span className="font-semibold">Letters:</span> {currentQuiz.letters}
+              </p>
+            </div>
           </div>
           
           {/* Game status message */}
           {gameStatus !== "playing" && (
             <div className={`p-4 rounded-lg text-center text-white mb-6 ${
-              gameStatus === "won" ? "bg-green-500" : "bg-red-500"
+              gameStatus === "correct" ? "bg-green-500" : "bg-red-500"
             }`}>
-              {gameStatus === "won" 
-                ? "🎉 Congratulations! You solved the puzzle!" 
-                : `😔 Oh no! The word was "${currentWord}"`
+              {gameStatus === "correct" 
+                ? "🎉 Congratulations! Your answer is correct!" 
+                : `😔 Oh no! The correct answer was "${currentQuiz.word}"`
               }
             </div>
           )}
           
-          {/* Word display */}
-          <div className="flex justify-center gap-2 flex-wrap mb-8">
-            {currentWord.split('').map((letter, index) => (
-              <div 
-                key={index}
-                className={`w-10 h-12 flex items-center justify-center border-b-2 
-                  ${letter === ' ' 
-                    ? 'border-transparent mx-2' 
-                    : guessedLetters.includes(letter) 
-                      ? 'border-yearbook-gold' 
-                      : 'border-yearbook-brown/50'
-                  }`}
-              >
-                <span className={`text-xl font-bold text-yearbook-brown ${
-                  guessedLetters.includes(letter) ? 'opacity-100' : 'opacity-0'
-                }`}>
-                  {letter}
-                </span>
+          {/* Answer form */}
+          <form onSubmit={handleSubmit} className="mb-8">
+            <div className="space-y-4">
+              <div>
+                <label htmlFor="answer" className="block text-yearbook-brown font-medium mb-2">
+                  Your Answer
+                </label>
+                <input
+                  type="text"
+                  id="answer"
+                  value={userAnswer}
+                  onChange={(e) => setUserAnswer(e.target.value)}
+                  disabled={gameStatus !== "playing"}
+                  placeholder="Type your answer here..."
+                  className="w-full p-3 border border-yearbook-gold/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-yearbook-gold/50"
+                />
               </div>
-            ))}
-          </div>
-          
-          {/* Alphabet buttons */}
-          <motion.div 
-            className="grid grid-cols-7 gap-2 mb-8"
-            variants={{
-              hidden: { opacity: 0 },
-              show: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.03
-                }
-              }
-            }}
-            initial="hidden"
-            animate="show"
-          >
-            {alphabet.map((letter) => (
-              <motion.button
-                key={letter}
-                onClick={() => handleLetterClick(letter)}
-                disabled={guessedLetters.includes(letter) || gameStatus !== "playing"}
-                className={`aspect-square rounded-md flex items-center justify-center text-lg font-semibold transition-all ${
-                  guessedLetters.includes(letter)
-                    ? correctLetters.includes(letter)
-                      ? 'bg-green-100 text-green-700 border border-green-300'
-                      : 'bg-red-100 text-red-700 border border-red-300'
-                    : 'bg-yearbook-gold/10 text-yearbook-brown hover:bg-yearbook-gold/20 active:bg-yearbook-gold/30'
-                }`}
-                variants={{
-                  hidden: { y: 20, opacity: 0 },
-                  show: { y: 0, opacity: 1 }
-                }}
-              >
-                {letter}
-              </motion.button>
-            ))}
-          </motion.div>
+              
+              <div className="flex flex-col space-y-2">
+                <button
+                  type="submit"
+                  disabled={gameStatus !== "playing" || !userAnswer.trim()}
+                  className={`px-6 py-3 rounded-lg ${
+                    gameStatus !== "playing" || !userAnswer.trim()
+                      ? 'bg-yearbook-gold/30 text-white cursor-not-allowed'
+                      : 'bg-yearbook-gold text-white hover:bg-yearbook-gold/90'
+                  }`}
+                >
+                  Submit Answer
+                </button>
+                
+                {gameStatus === "playing" && attempts > 0 && (
+                  <p className="text-amber-600 text-center">
+                    Attempts: {attempts}/3
+                  </p>
+                )}
+              </div>
+            </div>
+          </form>
           
           {/* Reset button */}
           <div className="text-center">
             <button
-              onClick={resetPuzzle}
+              onClick={resetQuiz}
               className="px-8 py-3 bg-yearbook-gold text-white rounded-full hover:bg-yearbook-gold/90"
             >
-              Reset Puzzle
+              Reset Quiz
             </button>
           </div>
         </div>
@@ -236,4 +210,4 @@ const Hangman = () => {
   );
 };
 
-export default Hangman;
+export default QuizGame;

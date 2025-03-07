@@ -57,10 +57,10 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				yearbook: {
-					cream: '#FFF8E1',
-					gold: '#D4AF37',
-					brown: '#614E32',
-					lightbrown: '#9B8661'
+					cream: '#E6F2FF', // Changed from cream to light blue
+					gold: '#1E5DB3', // Changed from gold to denim blue
+					brown: '#161B25', // Changed from brown to dark blue-black
+					lightbrown: '#536D96' // Changed from lightbrown to light denim blue
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',

@@ -76,10 +76,12 @@ const Memories = () => {
   const [selectedImage, setSelectedImage] = useState<any | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>(memoryCategories[0].id);
 
-  // Memoize the category change handler to prevent re-renders
+  // Improved category change handler with debounce to prevent double-clicks
   const handleCategoryChange = useCallback((categoryId: string) => {
-    setActiveCategory(categoryId);
-  }, []);
+    if (activeCategory !== categoryId) {
+      setActiveCategory(categoryId);
+    }
+  }, [activeCategory]);
 
   const currentCategory = memoryCategories.find(cat => cat.id === activeCategory);
 
@@ -92,16 +94,17 @@ const Memories = () => {
         <div className="py-4">
           {/* Category tabs - using button elements with proper event handling */}
           <div className="flex overflow-x-auto pb-2 mb-6 hide-scrollbar">
-            <div className="flex space-x-2">
+            <div className="flex space-x-4">
               {memoryCategories.map((category) => (
                 <button
                   key={category.id}
                   type="button"
                   aria-pressed={activeCategory === category.id}
                   onClick={() => handleCategoryChange(category.id)}
-                  className={`px-4 py-2 whitespace-nowrap rounded-full transition-all focus:outline-none ${
+                  disabled={activeCategory === category.id}
+                  className={`px-5 py-2 whitespace-nowrap rounded-full transition-all focus:outline-none ${
                     activeCategory === category.id 
-                      ? 'bg-yearbook-gold text-white' 
+                      ? 'bg-yearbook-gold text-white cursor-default' 
                       : 'bg-yearbook-gold/10 text-yearbook-brown hover:bg-yearbook-gold/20'
                   }`}
                 >
@@ -147,6 +150,7 @@ const Memories = () => {
                         src={image.url}
                         alt={`Memory ${image.id}`}
                         className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                        loading="lazy"
                       />
                     </div>
                   </motion.div>

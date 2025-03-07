@@ -30,8 +30,8 @@ const YearbookLayout = ({ children, showNav = true, title }: YearbookLayoutProps
   return (
     <AudioProvider>
     <div className="relative min-h-screen w-full bg-white overflow-hidden">
-      {/* Background gradient effect - adjusted for white background */}
-      <div className="absolute top-0 left-0 w-full h-full bg-white -z-10"></div>
+      {/* Background gradient effect - adjusted for new color scheme */}
+      <div className="absolute top-0 left-0 w-full h-full bg-yearbook-cream/40 -z-10"></div>
       
       {/* Decorative elements - lighter for white background */}
       <div className="absolute top-20 left-10 w-40 h-40 rounded-full bg-yearbook-gold/5 blur-3xl -z-5"></div>
@@ -79,6 +79,7 @@ const YearbookLayout = ({ children, showNav = true, title }: YearbookLayoutProps
                   ? "text-yearbook-gold"
                   : "text-yearbook-brown/60"
               }`}
+              aria-label="Members"
             >
               <Users className="w-6 h-6" />
               <span className="text-xs mt-1">Members</span>
@@ -91,6 +92,7 @@ const YearbookLayout = ({ children, showNav = true, title }: YearbookLayoutProps
                   ? "text-yearbook-gold"
                   : "text-yearbook-brown/60"
               }`}
+              aria-label="Messages"
             >
               <MessageCircle className="w-6 h-6" />
               <span className="text-xs mt-1">Messages</span>
@@ -103,6 +105,7 @@ const YearbookLayout = ({ children, showNav = true, title }: YearbookLayoutProps
                   ? "text-yearbook-gold"
                   : "text-yearbook-brown/60"
               }`}
+              aria-label="Home"
             >
               <div className="w-12 h-12 bg-yearbook-gold rounded-full flex items-center justify-center -mt-8 border-4 border-white shadow-md">
                 <span className="text-white font-bold">MIU</span>
@@ -117,6 +120,13 @@ const YearbookLayout = ({ children, showNav = true, title }: YearbookLayoutProps
                   ? "text-yearbook-gold"
                   : "text-yearbook-brown/60"
               }`}
+              aria-label="Memories"
+              onClick={(e) => {
+                // This ensures the click event is processed immediately
+                if (location.pathname === "/memories") {
+                  e.preventDefault();
+                }
+              }}
             >
               <Image className="w-6 h-6" />
               <span className="text-xs mt-1">Memories</span>
@@ -129,9 +139,10 @@ const YearbookLayout = ({ children, showNav = true, title }: YearbookLayoutProps
                   ? "text-yearbook-gold"
                   : "text-yearbook-brown/60"
               }`}
+              aria-label="Quiz"
             >
               <GamepadIcon className="w-6 h-6" />
-              <span className="text-xs mt-1">Games</span>
+              <span className="text-xs mt-1">Quiz</span>
             </Link>
           </div>
         </div>
