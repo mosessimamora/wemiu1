@@ -83,7 +83,7 @@ const QuizGame = () => {
   
   return (
     <PageTransition>
-      <YearbookLayout title="Guess Who?">
+      <YearbookLayout title="Tebak Siapa?">
         {/* Audio Player for this page */}
         <AudioPlayer audioSrc="/music.mp3" />
         
@@ -91,7 +91,7 @@ const QuizGame = () => {
           {/* Quiz navigation - now just shows the quiz number */}
           <div className="flex justify-center items-center mb-6">
             <span className="text-yearbook-brown font-medium">
-              Quiz {currentQuizIndex + 1} of {quizzes.length}
+              Soal {currentQuizIndex + 1} dari {quizzes.length}
             </span>
           </div>
           
@@ -130,8 +130,8 @@ const QuizGame = () => {
               gameStatus === "correct" ? "bg-green-500" : "bg-red-500"
             }`}>
               {gameStatus === "correct" 
-                ? "🎉 Correct! You guessed it right!" 
-                : `😔 Oops! The correct answer was "${currentQuiz.word}"`
+                ? "🎉 BEH! Benar cuy!! Kelazz king!" 
+                : `😔 ADOH! Bisa pulak salah ya! "${currentQuiz.word}"`
               }
             </div>
           )}
@@ -142,14 +142,14 @@ const QuizGame = () => {
               <div className="space-y-4">
                 <div>
                   <label htmlFor="answer" className="block text-yearbook-brown font-medium mb-2">
-                    Your Answer
+                    Jawaban
                   </label>
                   <input
                     type="text"
                     id="answer"
                     value={userAnswer}
                     onChange={(e) => setUserAnswer(e.target.value)}
-                    placeholder="Type your answer here..."
+                    placeholder="Ketik Jawabanmu Disini..."
                     className="w-full p-3 border border-yearbook-gold/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-yearbook-gold/50"
                   />
                 </div>
@@ -164,7 +164,7 @@ const QuizGame = () => {
                         : 'bg-yearbook-gold text-white hover:bg-yearbook-gold/90'
                     }`}
                   >
-                    Submit Answer
+                    Kirim
                   </button>
                 </div>
               </div>
@@ -177,14 +177,14 @@ const QuizGame = () => {
                   onClick={nextQuiz}
                   className="px-8 py-3 bg-yearbook-gold text-white rounded-lg hover:bg-yearbook-gold/90 w-full max-w-xs"
                 >
-                  Next Quiz
+                  LANJOT
                 </button>
               )}
               <button
                 onClick={resetQuiz}
                 className="px-8 py-3 bg-yearbook-brown text-white rounded-lg hover:bg-yearbook-brown/90 w-full max-w-xs"
               >
-                Try Again
+                COBA LAGI?
               </button>
             </div>
           )}
