@@ -3,9 +3,8 @@ import { useState } from "react";
 import PageTransition from "../components/PageTransition";
 import YearbookLayout from "../components/YearbookLayout";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Instagram, MessageCircle, ArrowLeft } from "lucide-react";
+import { ChevronLeft, ChevronRight, Instagram, MessageCircle } from "lucide-react";
 import AudioPlayer from "../components/AudioPlayer";
-import { Link } from "react-router-dom";
 
 // Teacher data
 const teacher = {
@@ -464,125 +463,268 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
-    transition: { duration: 0.4 }
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15
+    }
   }
 };
 
 const Members = () => {
-  const [showTeacher, setShowTeacher] = useState(true);
-  
+  const [selectedStudent, setSelectedStudent] = useState<(typeof students[0] | typeof teacher) | null>(null);
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+
+  const nextPhoto = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedStudent) {
+      setCurrentPhotoIndex((prev) => 
+        prev === selectedStudent.photos.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
+
+  const prevPhoto = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedStudent) {
+      setCurrentPhotoIndex((prev) => 
+        prev === 0 ? selectedStudent.photos.length - 1 : prev - 1
+      );
+    }
+  };
+
+  const resetAndClose = () => {
+    setSelectedStudent(null);
+    setCurrentPhotoIndex(0);
+  };
+
   return (
     <PageTransition>
-      <YearbookLayout title="Wemiu Class">
-        {/* Audio Player for this page */}
-        <AudioPlayer audioSrc="/music.mp3" />
+      <YearbookLayout showNav={true} title="">
+        {/* Background Music Player */}
+        <AudioPlayer audioSrc="/lovable-uploads/members-background.mp3" />
         
-        <div className="pb-20">
-          {/* Toggle buttons */}
-          <div className="flex justify-center space-x-4 mb-8">
-            <button
-              onClick={() => setShowTeacher(true)}
-              className={`px-6 py-2 rounded-full ${
-                showTeacher 
-                  ? "bg-yearbook-gold text-white" 
-                  : "bg-yearbook-gold/20 text-yearbook-brown"
-              }`}
-            >
-              Teacher
-            </button>
-            <button
-              onClick={() => setShowTeacher(false)}
-              className={`px-6 py-2 rounded-full ${
-                !showTeacher 
-                  ? "bg-yearbook-gold text-white" 
-                  : "bg-yearbook-gold/20 text-yearbook-brown"
-              }`}
-            >
-              Students
-            </button>
-          </div>
-          
-          {/* Teacher section */}
-          {showTeacher ? (
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={containerVariants}
-              className="max-w-md mx-auto"
-            >
+        <div className="py-4">
+          {/* Teacher Section */}
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold text-center text-yearbook-brown mb-4">Our Lovely Teacher</h2>
+            <div className="flex justify-center">
               <motion.div
-                variants={itemVariants}
-                className="bg-white rounded-xl shadow-lg overflow-hidden mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="w-full max-w-xs"
               >
-                <div className="relative">
-                  <img 
-                    src={teacher.photos[0]} 
-                    alt={teacher.name}
-                    className="w-full h-auto object-cover"
-                  />
-                </div>
-                
-                <div className="p-6">
-                  <h2 className="text-xl font-semibold text-yearbook-brown mb-2">{teacher.name}</h2>
-                  
-                  <p className="text-yearbook-brown/80 mb-4">{teacher.quote}</p>
-                  
-                  <div className="flex justify-center space-x-4">
-                    <a 
-                      href={`https://instagram.com/${teacher.instagram}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-full bg-yearbook-gold/10 text-yearbook-brown hover:bg-yearbook-gold/20"
+                <div 
+                  className="student-card"
+                  onClick={() => setSelectedStudent(teacher)}
+                >
+                  <div className="aspect-[3/4] overflow-hidden bg-yearbook-gold/10">
+                    <img
+                      src={teacher.photos[0]}
+                      alt={teacher.name}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-4 bg-yearbook-gold/5">
+                    <h3 className="font-medium text-yearbook-brown text-center">{teacher.name}</h3>
+                    <p className="text-center text-yearbook-brown/80 text-sm mt-1">{teacher.birthDate}</p>
+                    <p className="text-yearbook-brown/70 text-sm mt-2 italic text-center line-clamp-2">{teacher.quote}</p>
+                    
+                    <div className="mt-3 space-y-1">
+                      <a 
+                        href={`https://instagram.com/${teacher.instagram}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-yearbook-brown/70 hover:text-yearbook-brown text-xs"
+                      >
+                        <Instagram className="w-3 h-3 text-yearbook-brown" />
+                        <span>@{teacher.instagram}</span>
+                      </a>
+                      
+                      <a 
+                        href={`https://wa.me/${teacher.whatsapp}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-yearbook-brown/70 hover:text-yearbook-brown text-xs"
+                      >
+                        <MessageCircle className="w-3 h-3 text-yearbook-brown" />
+                        <span>+{teacher.whatsapp}</span>
+                      </a>
+                    </div>
+                    
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedStudent(teacher);
+                      }}
+                      className="mt-3 w-full px-3 py-1.5 bg-yearbook-gold text-white rounded-full text-sm hover:bg-yearbook-gold/90 transition-colors"
                     >
-                      <Instagram size={20} />
-                    </a>
-                    <a 
-                      href={`https://wa.me/${teacher.whatsapp}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-full bg-yearbook-gold/10 text-yearbook-brown hover:bg-yearbook-gold/20"
-                    >
-                      <MessageCircle size={20} />
-                    </a>
+                      Detail
+                    </button>
                   </div>
                 </div>
               </motion.div>
-            </motion.div>
-          ) : (
-            /* Students grid */
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={containerVariants}
-              className="grid grid-cols-2 md:grid-cols-3 gap-4 px-4"
-            >
-              {students.map((student) => (
-                <motion.div
-                  key={student.id}
-                  variants={itemVariants}
-                  className="bg-white rounded-lg shadow overflow-hidden"
-                >
-                  <div className="relative w-full pt-[100%]">
-                    <img 
-                      src={student.photos[0]} 
-                      alt={student.name}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
+            </div>
+          </div>
+          
+          {/* Students Section */}
+          <h2 className="text-2xl font-bold text-center text-yearbook-brown mb-6">We Miu Members</h2>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
+          >
+            {students.map((student) => (
+              <motion.div
+                key={student.id}
+                variants={itemVariants}
+                whileHover={{ y: -5 }}
+                className="student-card"
+              >
+                <div className="aspect-[3/4] overflow-hidden bg-yearbook-gold/10" onClick={() => setSelectedStudent(student)}>
+                  <img
+                    src={student.photos[0]}
+                    alt={student.name}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
+                <div className="p-4 bg-yearbook-gold/5">
+                  <h3 className="font-medium text-yearbook-brown text-center break-words">{student.name}</h3>
+                  <p className="text-center text-yearbook-brown/80 text-sm mt-1">{student.birthDate}</p>
+                  <p className="text-yearbook-brown/70 text-sm mt-2 italic text-center line-clamp-2">{student.quote}</p>
+                  
+                  <div className="mt-3 space-y-1">
+                    <a 
+                      href={`https://instagram.com/${student.instagram}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-yearbook-brown/70 hover:text-yearbook-brown text-xs"
+                    >
+                      <Instagram className="w-3 h-3 text-yearbook-brown" />
+                      <span>@{student.instagram}</span>
+                    </a>
+                    
+                    <a 
+                      href={`https://wa.me/${student.whatsapp}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-yearbook-brown/70 hover:text-yearbook-brown text-xs"
+                    >
+                      <MessageCircle className="w-3 h-3 text-yearbook-brown" />
+                      <span>+{student.whatsapp}</span>
+                    </a>
                   </div>
                   
-                  <div className="p-3">
-                    <h3 className="text-sm font-medium text-yearbook-brown truncate">
-                      {student.name}
-                    </h3>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedStudent(student);
+                    }}
+                    className="mt-3 w-full px-3 py-1.5 bg-yearbook-gold text-white rounded-full text-sm hover:bg-yearbook-gold/90 transition-colors"
+                  >
+                    Detail
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
+
+        {/* Student Detail Modal with Photo Slider */}
+        {selectedStudent && (
+          <div 
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+            onClick={resetAndClose}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className="bg-white rounded-xl overflow-hidden shadow-xl max-w-md w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative w-full aspect-square bg-yearbook-gold/10">
+                <img
+                  src={selectedStudent.photos[currentPhotoIndex]}
+                  alt={selectedStudent.name}
+                  className="w-full h-full object-cover"
+                />
+                
+                {/* Photo slider controls */}
+                <button 
+                  onClick={prevPhoto}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 p-2 rounded-full text-white hover:bg-black/50 transition"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                <button 
+                  onClick={nextPhoto}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 p-2 rounded-full text-white hover:bg-black/50 transition"
+                >
+                  <ChevronRight size={20} />
+                </button>
+                
+                {/* Photo indicator dots */}
+                <div className="absolute bottom-2 left-0 right-0 flex justify-center space-x-2">
+                  {selectedStudent.photos.map((_, index) => (
+                    <span 
+                      key={index}
+                      className={`w-2 h-2 rounded-full ${currentPhotoIndex === index ? 'bg-white' : 'bg-white/50'}`}
+                    />
+                  ))}
+                </div>
+              </div>
+              <div className="p-6">
+                <h2 className="text-2xl font-semibold text-yearbook-brown mb-2">
+                  {selectedStudent.name}
+                </h2>
+                
+                {/* Quote Section */}
+                <div className="mb-6 p-4 bg-yearbook-gold/5 rounded-lg border border-yearbook-gold/10">
+                  <p className="text-yearbook-brown/80 italic">
+                    {selectedStudent.quote}
+                  </p>
+                </div>
+                
+                {/* Social Media Links */}
+                <div className="space-y-3">
+                  <a 
+                    href={`https://instagram.com/${selectedStudent.instagram}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-yearbook-brown/70 hover:text-yearbook-brown"
+                  >
+                    <Instagram className="w-5 h-5 text-yearbook-brown" />
+                    <span>@{selectedStudent.instagram}</span>
+                  </a>
+                  
+                  <a 
+                    href={`https://wa.me/${selectedStudent.whatsapp}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-yearbook-brown/70 hover:text-yearbook-brown"
+                  >
+                    <MessageCircle className="w-5 h-5 text-yearbook-brown" />
+                    <span>+{selectedStudent.whatsapp}</span>
+                  </a>
+                </div>
+                
+                <button
+                  onClick={resetAndClose}
+                  className="mt-6 px-4 py-2 bg-yearbook-gold text-white rounded-full w-full"
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
       </YearbookLayout>
     </PageTransition>
   );
