@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import PageTransition from "../components/PageTransition";
 import YearbookLayout from "../components/YearbookLayout";
 import { motion, AnimatePresence } from "framer-motion";
@@ -76,6 +76,11 @@ const Memories = () => {
   const [selectedImage, setSelectedImage] = useState<any | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>(memoryCategories[0].id);
 
+  // Memoize the category change handler to prevent re-renders
+  const handleCategoryChange = useCallback((categoryId: string) => {
+    setActiveCategory(categoryId);
+  }, []);
+
   const currentCategory = memoryCategories.find(cat => cat.id === activeCategory);
 
   return (
@@ -85,14 +90,16 @@ const Memories = () => {
         <AudioPlayer audioSrc="/lovable-uploads/memories-background.mp3" />
         
         <div className="py-4">
-          {/* Category tabs */}
+          {/* Category tabs - using button elements with proper event handling */}
           <div className="flex overflow-x-auto pb-2 mb-6 hide-scrollbar">
             <div className="flex space-x-2">
               {memoryCategories.map((category) => (
                 <button
                   key={category.id}
-                  onClick={() => setActiveCategory(category.id)}
-                  className={`px-4 py-2 whitespace-nowrap rounded-full transition-all ${
+                  type="button"
+                  aria-pressed={activeCategory === category.id}
+                  onClick={() => handleCategoryChange(category.id)}
+                  className={`px-4 py-2 whitespace-nowrap rounded-full transition-all focus:outline-none ${
                     activeCategory === category.id 
                       ? 'bg-yearbook-gold text-white' 
                       : 'bg-yearbook-gold/10 text-yearbook-brown hover:bg-yearbook-gold/20'

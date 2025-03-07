@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import Messages from "./pages/Messages";
 import Members from "./pages/Members";
 import Memories from "./pages/Memories";
+import Hangman from "./pages/Hangman";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/messages" element={<Messages />} />
             <Route path="/members" element={<Members />} />
             <Route path="/memories" element={<Memories />} />
+            <Route path="/hangman" element={<Hangman />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AnimatePresence>

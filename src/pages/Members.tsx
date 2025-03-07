@@ -15,6 +15,7 @@ const teacher = {
     "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
   ],
+  birthDate: "01 January 1980",
   quote: "\"Education is not the filling of a pail, but the lighting of a fire.\"",
   instagram: "meiria_jolina_tarigan",
   whatsapp: "6285236605347"
@@ -30,6 +31,7 @@ const students = [
       "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "https://images.unsplash.com/photo-1504257432389-52343af06ae3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ],
+    birthDate: "15 March 2006",
     quote: "\"Lorem ipsum dolor sit amet\"",
     instagram: "cecillia",
     whatsapp: "628123456789"
@@ -509,25 +511,64 @@ const Members = () => {
           {/* Teacher Section */}
           <div className="mb-8">
             <h2 className="text-2xl font-bold text-center text-yearbook-brown mb-4">Our Lovely Teacher</h2>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="w-full max-w-3xl mx-auto"
-              onClick={() => setSelectedStudent(teacher)}
-            >
-              <div className="aspect-[3/4] overflow-hidden bg-yearbook-gold/10 rounded-lg">
-                <img
-                  src={teacher.photos[0]}
-                  alt={teacher.name}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                />
-              </div>
-              <div className="p-3 bg-yearbook-gold/5 text-center">
-                <h3 className="font-medium text-lg text-yearbook-brown">{teacher.name}</h3>
-                <p className="text-yearbook-brown/70 text-sm">@{teacher.instagram}</p>
-              </div>
-            </motion.div>
+            <div className="flex justify-center">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="w-full max-w-xs"
+              >
+                <div 
+                  className="student-card"
+                  onClick={() => setSelectedStudent(teacher)}
+                >
+                  <div className="aspect-[3/4] overflow-hidden bg-yearbook-gold/10">
+                    <img
+                      src={teacher.photos[0]}
+                      alt={teacher.name}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-4 bg-yearbook-gold/5">
+                    <h3 className="font-medium text-yearbook-brown text-center">{teacher.name}</h3>
+                    <p className="text-center text-yearbook-brown/80 text-sm mt-1">{teacher.birthDate}</p>
+                    <p className="text-yearbook-brown/70 text-sm mt-2 italic text-center line-clamp-2">{teacher.quote}</p>
+                    
+                    <div className="mt-3 space-y-1">
+                      <a 
+                        href={`https://instagram.com/${teacher.instagram}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-yearbook-brown/70 hover:text-yearbook-brown text-xs"
+                      >
+                        <Instagram className="w-3 h-3 text-yearbook-brown" />
+                        <span>@{teacher.instagram}</span>
+                      </a>
+                      
+                      <a 
+                        href={`https://wa.me/${teacher.whatsapp}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-yearbook-brown/70 hover:text-yearbook-brown text-xs"
+                      >
+                        <MessageCircle className="w-3 h-3 text-yearbook-brown" />
+                        <span>+{teacher.whatsapp}</span>
+                      </a>
+                    </div>
+                    
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedStudent(teacher);
+                      }}
+                      className="mt-3 w-full px-3 py-1.5 bg-yearbook-gold text-white rounded-full text-sm hover:bg-yearbook-gold/90 transition-colors"
+                    >
+                      Detail
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
           
           {/* Students Section */}
@@ -544,18 +585,50 @@ const Members = () => {
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
                 className="student-card"
-                onClick={() => setSelectedStudent(student)}
               >
-                <div className="aspect-[3/4] overflow-hidden bg-yearbook-gold/10">
+                <div className="aspect-[3/4] overflow-hidden bg-yearbook-gold/10" onClick={() => setSelectedStudent(student)}>
                   <img
                     src={student.photos[0]}
                     alt={student.name}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   />
                 </div>
-                <div className="p-3 bg-yearbook-gold/5">
-                  <h3 className="font-medium text-yearbook-brown truncate">{student.name}</h3>
-                  <p className="text-yearbook-brown/70 text-sm truncate">@{student.instagram}</p>
+                <div className="p-4 bg-yearbook-gold/5">
+                  <h3 className="font-medium text-yearbook-brown text-center break-words">{student.name}</h3>
+                  <p className="text-center text-yearbook-brown/80 text-sm mt-1">{student.birthDate}</p>
+                  <p className="text-yearbook-brown/70 text-sm mt-2 italic text-center line-clamp-2">{student.quote}</p>
+                  
+                  <div className="mt-3 space-y-1">
+                    <a 
+                      href={`https://instagram.com/${student.instagram}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-yearbook-brown/70 hover:text-yearbook-brown text-xs"
+                    >
+                      <Instagram className="w-3 h-3 text-yearbook-brown" />
+                      <span>@{student.instagram}</span>
+                    </a>
+                    
+                    <a 
+                      href={`https://wa.me/${student.whatsapp}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-yearbook-brown/70 hover:text-yearbook-brown text-xs"
+                    >
+                      <MessageCircle className="w-3 h-3 text-yearbook-brown" />
+                      <span>+{student.whatsapp}</span>
+                    </a>
+                  </div>
+                  
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedStudent(student);
+                    }}
+                    className="mt-3 w-full px-3 py-1.5 bg-yearbook-gold text-white rounded-full text-sm hover:bg-yearbook-gold/90 transition-colors"
+                  >
+                    Detail
+                  </button>
                 </div>
               </motion.div>
             ))}

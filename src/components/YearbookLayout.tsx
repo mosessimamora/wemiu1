@@ -1,7 +1,8 @@
+
 import { AudioProvider } from "./AudioContext";
 import { ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { MessageCircle, Users, Image, ChevronLeft } from "lucide-react";
+import { MessageCircle, Users, Image, ChevronLeft, GamepadIcon } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface YearbookLayoutProps {
@@ -67,10 +68,77 @@ const YearbookLayout = ({ children, showNav = true, title }: YearbookLayoutProps
         {children}
       </main>
       
-      {/* Navigation - fixed the Memories label text */}
+      {/* Navigation */}
+      {showNav && (
+        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-yearbook-gold/20 px-4 py-3 z-40">
+          <div className="container mx-auto max-w-md flex justify-between items-center">
+            <Link 
+              to="/members" 
+              className={`flex flex-col items-center p-2 transition-colors ${
+                location.pathname === "/members" 
+                  ? "text-yearbook-gold"
+                  : "text-yearbook-brown/60"
+              }`}
+            >
+              <Users className="w-6 h-6" />
+              <span className="text-xs mt-1">Members</span>
+            </Link>
+            
+            <Link 
+              to="/messages" 
+              className={`flex flex-col items-center p-2 transition-colors ${
+                location.pathname === "/messages" 
+                  ? "text-yearbook-gold"
+                  : "text-yearbook-brown/60"
+              }`}
+            >
+              <MessageCircle className="w-6 h-6" />
+              <span className="text-xs mt-1">Messages</span>
+            </Link>
+            
+            <Link 
+              to="/" 
+              className={`flex flex-col items-center p-2 transition-colors ${
+                location.pathname === "/" 
+                  ? "text-yearbook-gold"
+                  : "text-yearbook-brown/60"
+              }`}
+            >
+              <div className="w-12 h-12 bg-yearbook-gold rounded-full flex items-center justify-center -mt-8 border-4 border-white shadow-md">
+                <span className="text-white font-bold">MIU</span>
+              </div>
+              <span className="text-xs mt-1">Home</span>
+            </Link>
+            
+            <Link 
+              to="/memories" 
+              className={`flex flex-col items-center p-2 transition-colors ${
+                location.pathname === "/memories" 
+                  ? "text-yearbook-gold"
+                  : "text-yearbook-brown/60"
+              }`}
+            >
+              <Image className="w-6 h-6" />
+              <span className="text-xs mt-1">Memories</span>
+            </Link>
+            
+            <Link 
+              to="/hangman" 
+              className={`flex flex-col items-center p-2 transition-colors ${
+                location.pathname === "/hangman" 
+                  ? "text-yearbook-gold"
+                  : "text-yearbook-brown/60"
+              }`}
+            >
+              <GamepadIcon className="w-6 h-6" />
+              <span className="text-xs mt-1">Games</span>
+            </Link>
+          </div>
+        </div>
+      )}
       
     </div>
-	</AudioProvider>
+    </AudioProvider>
   );
 };
 

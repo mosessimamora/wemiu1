@@ -171,11 +171,13 @@ const Messages = () => {
                 transition={pageTransition}
                 className="absolute inset-0 w-full h-full"
               >
-                {/* Full-screen background image */}
-                <div 
-                  className="absolute inset-0 w-full h-full bg-cover bg-center"
-                  style={{ backgroundImage: `url(${currentMessage.backgroundImage})` }}
-                >
+                {/* Full-screen background image with object-contain for desktop and object-cover for mobile */}
+                <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-black">
+                  <img
+                    src={currentMessage.backgroundImage}
+                    alt={`Message ${currentPage + 1}`}
+                    className="w-full h-full md:object-contain object-cover"
+                  />
                   {/* Dark overlay for better text readability */}
                   <div className="absolute inset-0 bg-black/30"></div>
                 </div>
