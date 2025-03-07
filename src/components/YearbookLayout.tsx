@@ -55,7 +55,7 @@ const YearbookLayout = ({ children, showNav = true, title }: YearbookLayoutProps
             initial="hidden"
             animate="visible"
             variants={headerVariants}
-            className="text-2xl font-semibold text-center text-yearbook-brown"
+            className="text-2xl font-semibold text-center text-yearbook-brown absolute left-1/2 transform -translate-x-1/2"
           >
             {title}
           </motion.h1>

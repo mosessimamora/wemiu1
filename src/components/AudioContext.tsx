@@ -1,6 +1,8 @@
+
 "use client";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
 interface AudioContextProps {
   isPlaying: boolean;
@@ -19,14 +21,32 @@ export const useAudio = () => {
 
 export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true); // Default to playing
+  const location = useLocation();
 
   useEffect(() => {
-    audioRef.current = new Audio("/music.mp3");
-    audioRef.current.loop = true;
+    // Create audio element if it doesn't exist
+    if (!audioRef.current) {
+      audioRef.current = new Audio("/music.mp3");
+      audioRef.current.loop = true;
+    }
+
+    // Autoplay when component mounts
+    const playPromise = audioRef.current.play();
+    
+    // Handle autoplay restrictions
+    if (playPromise !== undefined) {
+      playPromise.catch((error) => {
+        console.log("Audio autoplay prevented:", error);
+        setIsPlaying(false);
+      });
+    }
 
     return () => {
-      audioRef.current?.pause();
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
     };
   }, []);
 
@@ -34,12 +54,13 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
+        setIsPlaying(false);
       } else {
         audioRef.current.play().catch((error) => {
           console.log("Audio play error:", error);
         });
+        setIsPlaying(true);
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
@@ -50,6 +71,7 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
         <button
           onClick={togglePlayback}
           className="p-3 rounded-full bg-yearbook-brown text-white shadow-md hover:bg-yearbook-brown/90"
+          aria-label={isPlaying ? "Mute audio" : "Unmute audio"}
         >
           {isPlaying ? <Volume2 size={20} /> : <VolumeX size={20} />}
         </button>

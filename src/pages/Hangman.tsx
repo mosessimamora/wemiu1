@@ -40,7 +40,7 @@ const QuizGame = () => {
   
   const currentQuiz = quizzes[currentQuizIndex];
   
-  // Reset game when quiz changes - fixing the error here
+  // Reset game when quiz changes
   useEffect(() => {
     setUserAnswer("");
     setGameStatus("playing");
@@ -64,16 +64,6 @@ const QuizGame = () => {
   const nextQuiz = () => {
     if (currentQuizIndex < quizzes.length - 1) {
       setCurrentQuizIndex(prev => prev + 1);
-      setGameStatus("playing");
-      setUserAnswer("");
-    }
-  };
-  
-  const prevQuiz = () => {
-    if (currentQuizIndex > 0) {
-      setCurrentQuizIndex(prev => prev - 1);
-      setGameStatus("playing");
-      setUserAnswer("");
     }
   };
   
@@ -94,35 +84,11 @@ const QuizGame = () => {
     <PageTransition>
       <YearbookLayout title="Guess Who?">
         <div className="max-w-2xl mx-auto py-8 px-4">
-          {/* Quiz navigation */}
-          <div className="flex justify-between items-center mb-6">
-            <button 
-              onClick={prevQuiz}
-              disabled={currentQuizIndex === 0}
-              className={`px-4 py-2 rounded-full ${
-                currentQuizIndex === 0 
-                  ? 'bg-yearbook-gold/30 text-yearbook-brown/50 cursor-not-allowed' 
-                  : 'bg-yearbook-gold text-white hover:bg-yearbook-gold/90'
-              }`}
-            >
-              Previous
-            </button>
-            
+          {/* Quiz navigation - now just shows the quiz number */}
+          <div className="flex justify-center items-center mb-6">
             <span className="text-yearbook-brown font-medium">
               Quiz {currentQuizIndex + 1} of {quizzes.length}
             </span>
-            
-            <button 
-              onClick={nextQuiz}
-              disabled={currentQuizIndex === quizzes.length - 1}
-              className={`px-4 py-2 rounded-full ${
-                currentQuizIndex === quizzes.length - 1 
-                  ? 'bg-yearbook-gold/30 text-yearbook-brown/50 cursor-not-allowed' 
-                  : 'bg-yearbook-gold text-white hover:bg-yearbook-gold/90'
-              }`}
-            >
-              Next
-            </button>
           </div>
           
           {/* Text hint and masked word */}
@@ -136,17 +102,17 @@ const QuizGame = () => {
               </p>
             </div>
             
-            {/* Image appears only after answering */}
+            {/* Image appears only after answering - fixed to show full image */}
             {gameStatus !== "playing" && (
               <motion.div 
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="aspect-video bg-yearbook-gold/10 rounded-xl overflow-hidden mb-3"
+                className="w-full max-w-md mx-auto rounded-xl overflow-hidden mb-3"
               >
                 <img 
                   src={currentQuiz.image} 
                   alt="Person" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto object-contain"
                 />
               </motion.div>
             )}
@@ -164,46 +130,53 @@ const QuizGame = () => {
             </div>
           )}
           
-          {/* Answer form */}
-          <form onSubmit={handleSubmit} className="mb-8">
-            <div className="space-y-4">
-              <div>
-                <label htmlFor="answer" className="block text-yearbook-brown font-medium mb-2">
-                  Your Answer
-                </label>
-                <input
-                  type="text"
-                  id="answer"
-                  value={userAnswer}
-                  onChange={(e) => setUserAnswer(e.target.value)}
-                  disabled={gameStatus !== "playing"}
-                  placeholder="Type your answer here..."
-                  className="w-full p-3 border border-yearbook-gold/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-yearbook-gold/50"
-                />
+          {/* Answer form - only shown when playing */}
+          {gameStatus === "playing" ? (
+            <form onSubmit={handleSubmit} className="mb-8">
+              <div className="space-y-4">
+                <div>
+                  <label htmlFor="answer" className="block text-yearbook-brown font-medium mb-2">
+                    Your Answer
+                  </label>
+                  <input
+                    type="text"
+                    id="answer"
+                    value={userAnswer}
+                    onChange={(e) => setUserAnswer(e.target.value)}
+                    placeholder="Type your answer here..."
+                    className="w-full p-3 border border-yearbook-gold/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-yearbook-gold/50"
+                  />
+                </div>
+                
+                <div className="flex flex-col space-y-2">
+                  <button
+                    type="submit"
+                    disabled={!userAnswer.trim()}
+                    className={`px-6 py-3 rounded-lg ${
+                      !userAnswer.trim()
+                        ? 'bg-yearbook-gold/30 text-white cursor-not-allowed'
+                        : 'bg-yearbook-gold text-white hover:bg-yearbook-gold/90'
+                    }`}
+                  >
+                    Submit Answer
+                  </button>
+                </div>
               </div>
-              
-              <div className="flex flex-col space-y-2">
+            </form>
+          ) : (
+            /* Show Next Quiz and Try Again buttons after answering */
+            <div className="flex flex-col space-y-4 items-center">
+              {currentQuizIndex < quizzes.length - 1 && (
                 <button
-                  type="submit"
-                  disabled={gameStatus !== "playing" || !userAnswer.trim()}
-                  className={`px-6 py-3 rounded-lg ${
-                    gameStatus !== "playing" || !userAnswer.trim()
-                      ? 'bg-yearbook-gold/30 text-white cursor-not-allowed'
-                      : 'bg-yearbook-gold text-white hover:bg-yearbook-gold/90'
-                  }`}
+                  onClick={nextQuiz}
+                  className="px-8 py-3 bg-yearbook-gold text-white rounded-lg hover:bg-yearbook-gold/90 w-full max-w-xs"
                 >
-                  Submit Answer
+                  Next Quiz
                 </button>
-              </div>
-            </div>
-          </form>
-          
-          {/* Reset button */}
-          {gameStatus !== "playing" && (
-            <div className="text-center">
+              )}
               <button
                 onClick={resetQuiz}
-                className="px-8 py-3 bg-yearbook-gold text-white rounded-full hover:bg-yearbook-gold/90"
+                className="px-8 py-3 bg-yearbook-brown text-white rounded-lg hover:bg-yearbook-brown/90 w-full max-w-xs"
               >
                 Try Again
               </button>
