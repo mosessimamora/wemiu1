@@ -31,12 +31,12 @@ const quizzes = [
     word: "TOBIAS",
     hint: "abang UNHAN",
     image: "/Tobias.jpg"
-  }
+  },
   {
     word: "JOSHUA",
     hint: "Raja panco",
     image: "/Joshua.jpg"
-  }
+  },
   {
     word: "NATHANAEL",
     hint: "sigma sigma boy",
