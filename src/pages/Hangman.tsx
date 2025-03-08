@@ -9,7 +9,7 @@ import AudioPlayer from "../components/AudioPlayer";
 const quizzes = [
   {
     word: "GIOVELLO",
-    hint: "suka sama Aurel",
+    hint: "ketua kelas paling ganteng dan rajin😍😍😍",
     image: "/Giovello.jpg"
   },
   {
@@ -31,6 +31,16 @@ const quizzes = [
     word: "TOBIAS",
     hint: "abang UNHAN",
     image: "/Tobias.jpg"
+  }
+  {
+    word: "JOSHUA",
+    hint: "Raja panco",
+    image: "/Joshua.jpg"
+  }
+  {
+    word: "NATHANAEL",
+    hint: "sigma sigma boy",
+    image: "/Nathanael.jpg"
   }
 ];
 
